@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,16 +55,19 @@ public class PayPalActivity extends AppCompatActivity {
             .merchantName("My Event Manager");
 
 
-    private ImageButton payment_BTN_paypal;
-    private Button payment_BTN_cash, payment_BTN_resend;
+    private Button payment_BTN_cash, payment_BTN_resend,payment_BTN_paypal;
     private TextView payment_LBL_totalamount;
     private TextView payment_LBL_paidamount;
     private TextView payment_LBL_leftamount;
     private TextView payment_LBL_paidpaypalamount;
     private TextView payment_LBL_totalgot_context;
+    private TextView payment_LBL_cash;
+    private TextView payment_LBL_resend;
     private TextView payment_LBL_res;
     private EditText payment_EDT_cash;
     private Toolbar payment_TOOL_toolbar;
+    private LinearLayout payment_LAY_resend;
+    private LinearLayout payment_LAY_cash;
 
     private StorageReference mStorageRef;
     private CreateInvoice invoice;
@@ -73,7 +76,7 @@ public class PayPalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_pal);
+        setContentView(R.layout.activity_pay_pal_v2);
         findViews();
         mStorageRef = FirebaseStorage.getInstance().getReference();
         payment_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -100,10 +103,10 @@ public class PayPalActivity extends AppCompatActivity {
         setTextViews();
 
         if (event.getPayment().getAmountleft() == 0) {
-            payment_BTN_resend.setVisibility(View.VISIBLE);
+            payment_LAY_resend.setVisibility(View.VISIBLE);
             payment_BTN_paypal.setVisibility(View.GONE);
-            payment_BTN_cash.setVisibility(View.GONE);
             payment_LBL_res.setVisibility(View.GONE);
+            payment_LAY_cash.setVisibility(View.GONE);
             payment_EDT_cash.setVisibility(View.GONE);
             payment_BTN_resend.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +118,12 @@ public class PayPalActivity extends AppCompatActivity {
                             .setPositiveButton("אישור", null)
                             .setIcon(android.R.drawable.ic_dialog_info)
                             .show();
+                }
+            });
+            payment_LBL_resend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    payment_LBL_resend.performClick();
                 }
             });
 
@@ -177,6 +186,13 @@ public class PayPalActivity extends AppCompatActivity {
 
                 }
 
+
+            }
+        });
+        payment_LBL_cash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                payment_BTN_cash.performClick();
             }
         });
 
@@ -358,8 +374,12 @@ public class PayPalActivity extends AppCompatActivity {
         payment_LBL_totalgot_context = findViewById(R.id.payment_LBL_totalgot_context);
         payment_EDT_cash = findViewById(R.id.payment_EDT_cash);
         payment_LBL_res = findViewById(R.id.payment_LBL_res);
+        payment_LBL_cash = findViewById(R.id.payment_LBL_cash);
         payment_BTN_resend = findViewById(R.id.payment_BTN_resend);
         payment_TOOL_toolbar = findViewById(R.id.payment_TOOL_toolbar);
+        payment_LBL_resend = findViewById(R.id.payment_LBL_resend);
+        payment_LAY_resend = findViewById(R.id.payment_LAY_resend);
+        payment_LAY_cash = findViewById(R.id.payment_LAY_cash);
     }
 }
 

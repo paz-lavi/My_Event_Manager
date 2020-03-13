@@ -19,46 +19,26 @@
         android:id="@+id/event_LBL_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/event_TOOL_toolbar"
-        android:textStyle="bold"
-        android:text="פרטי האירוע"
-        android:textSize="28sp"
-        android:textColor="@color/white"/>
-
-    <Button
-        android:id="@+id/event_BTN_payment"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/ic_btn_shape_bottom"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:text="תשלום"
-
+        android:text="פרטי האירוע"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
-        />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/event_BTN_payment"
+        android:layout_above="@id/event_LAY_payment"
         android:layout_below="@id/event_LBL_title"
+        android:layout_marginBottom="10dp"
         android:fadeScrollbars="false"
         android:scrollbarSize="7dp"
         android:scrollbarStyle="insideOverlay"
-        android:layout_marginBottom="10dp"
         android:scrollbarThumbVertical="@color/gray"
-        android:scrollbarTrackVertical="@color/black"
-        >
+        android:scrollbarTrackVertical="@color/black">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -331,7 +311,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/event_LAY_info"
-
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp" />
@@ -371,6 +350,7 @@
             app:backgroundTint="#32CF35"
 
             app:fabSize="mini" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/event_FAB_waze"
             android:layout_width="wrap_content"
@@ -380,6 +360,7 @@
             android:src="@drawable/ic_waze"
             app:backgroundTint="#00BCD4"
             app:fabSize="mini" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/event_FAB_call"
             android:layout_width="wrap_content"
@@ -395,8 +376,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            app:backgroundTint="#3F51B5"
-            android:src="@drawable/ic_more_vert_black_24dp" />
+            android:src="@drawable/ic_more_vert_black_24dp"
+            app:backgroundTint="#3F51B5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+        android:id="@+id/event_LAY_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/event_BTN_payment"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_cash_register"
+            />
+
+        <TextView
+            android:id="@+id/event_LBL_payment"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="תשלום"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </RelativeLayout>

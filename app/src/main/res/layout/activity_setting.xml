@@ -369,31 +369,76 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/setting_BTN_savesig"
 
-                    android:layout_width="120dp"
+                <LinearLayout
+                    android:id="@+id/setting_LAY_savesig"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_btn_shape_bottom"
-                    android:text="שמור חתימה"
-                    android:textColor="@color/white"
+                    android:orientation="vertical">
 
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    <Button
+                        android:id="@+id/setting_BTN_savesig"
+                        android:layout_gravity="center"
 
-                <Button
-                    android:id="@+id/setting_BTN_clear"
-                    android:layout_width="120dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_save_color"
+                        android:textColor="@color/white"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/setting_LBL_savesig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="שמור חתימה"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/setting_LAY_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:visibility="gone"
+
+                    android:layout_gravity="center_horizontal"
+
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_btn_shape_bottom"
-                    android:text="ניקוי חתימה"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/setting_BTN_clear"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+
+                        android:background="@drawable/ic_eraser"
+                 />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_clear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="ניקוי חתימה"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -405,29 +450,67 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/setting_BTN_save"
-            android:layout_width="120dp"
+        <LinearLayout
+            android:id="@+id/setting_LAY_cancel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:orientation="vertical">
 
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="שמור"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/setting_BTN_cancel"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/ic_cancel_color"
 
-        <Button
-            android:id="@+id/setting_BTN_cancel"
-            android:layout_width="120dp"
+         />
+
+            <TextView
+                android:id="@+id/setting_LBL_cancel"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ביטול"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_LAY_update"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="ביטול"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/setting_BTN_save"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_edit_file"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/setting_LBL_save"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ערוך"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

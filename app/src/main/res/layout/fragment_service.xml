@@ -34,46 +34,76 @@
                 android:ems="10"
                 android:hint="שם השירות"
                 android:gravity="center"
-
                 android:inputType="text"
                 android:lines="1"
                 android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/allservices_EDT_price"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="1234567890"
-                android:ems="10"
-                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/allservices_EDT_price"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
 
-                android:hint="מחיר"
-                android:inputType="number"
-                android:maxLength="10"
-                android:textColor="@color/white" />
+                    android:hint="מחיר"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/allservices_EDT_max"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="1234567890"
-                android:gravity="center"
+                <EditText
+                    android:id="@+id/allservices_EDT_max"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
 
-                android:ems="10"
-                android:hint="כמות מקסימלית לאירוע"
-                android:inputType="number"
-                android:textColor="@color/white" />
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
 
-            <Button
-                android:id="@+id/allservices_BTN_add"
-                android:layout_width="100dp"
+                    android:hint="מקסימום לאירוע"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/editservices_LAY_update"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/ic_btn_shape_bottom"
-                android:text="הוסף"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/allservices_BTN_add"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_add_color"
+                  />
+
+
+                <TextView
+                    android:id="@+id/editservices_LBL_update"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="הוסף"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

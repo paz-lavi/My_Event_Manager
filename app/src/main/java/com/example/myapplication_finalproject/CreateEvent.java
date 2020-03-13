@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -55,6 +56,7 @@ public class CreateEvent extends AppCompatActivity {
     private MyEvent event;
     private StorageReference mStorageRef;
     private CreateInvoice invoice;
+    private TextView create_LBL_date ,create_LBL_time;
     private boolean check = true;
 
 
@@ -90,7 +92,7 @@ public class CreateEvent extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         date = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        create_BTN_date.setText(date);
+                        create_LBL_date.setText(date);
                     }
                 }, Integer.parseInt(datestr[2]), Integer.parseInt(datestr[1]) - 1, Integer.parseInt(datestr[0]));
 
@@ -98,7 +100,12 @@ public class CreateEvent extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
+        create_LBL_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_BTN_date.performLongClick();
+            }
+        });
         create_BTN_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,13 +114,19 @@ public class CreateEvent extends AppCompatActivity {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
                         time = hourOfDay + ":" + (minute < 10 ? "0" + minute : minute);
-                        create_BTN_time.setText(time);
+                        create_LBL_time.setText(time);
                     }
                 }, 0, 0, true);
                 timePicker.show();
             }
         });
 
+        create_LBL_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_LBL_time.performLongClick();
+            }
+        });
         create_BTN_createevent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -323,6 +336,8 @@ public class CreateEvent extends AppCompatActivity {
         create_EDT_valid = findViewById(R.id.create_EDT_valid);
         create_SW_rem = findViewById(R.id.create_SW_rem);
         create_TOOL_toolbar = findViewById(R.id.create_TOOL_toolbar);
+        create_LBL_date = findViewById(R.id.create_LBL_date);
+        create_LBL_time = findViewById(R.id.create_LBL_time);
     }
 
 }

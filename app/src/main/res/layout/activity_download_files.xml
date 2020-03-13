@@ -35,50 +35,97 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/down_BTN_invoice"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="קבלות (יוצאות ללקוחות)"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
-            android:textColor="@color/white"
+            <Button
+                android:id="@+id/down_BTN_invoice"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_file_download_color"
+                android:gravity="center" />
 
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/down_LBL_invoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="קבלות"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/down_BTN_bid"
-            android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/ic_btn_shape_bottom"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
-            android:text="הצעות מחיר"
-            android:textColor="@color/white"
+            <Button
+                android:id="@+id/down_BTN_bid"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_file_download_color"
+                android:gravity="center" />
 
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/down_LAY_bid"
 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="הצעות מחיר"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/down_BTN_expenses"
-            android:layout_width="match_parent"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="קבלות (הוצאות)"
 
-            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
 
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/down_BTN_expenses"
+
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_file_download_color"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/down_LBL_expenses"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="קבלות (הוצאות)"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
 
 
     </LinearLayout>

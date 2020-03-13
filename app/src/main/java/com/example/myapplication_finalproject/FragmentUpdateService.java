@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +21,7 @@ public class FragmentUpdateService extends Fragment {
     private EditText editservices_EDT_name;
     private EditText editservices_EDT_price;
     private EditText editservices_EDT_max;
+    private TextView editservices_LBL_update;
     private MyService service;
     private boolean update = false;
 
@@ -87,13 +89,17 @@ public class FragmentUpdateService extends Fragment {
             editservices_EDT_price.setText(String.valueOf(service.getServicePrice()));
             editservices_EDT_max.setText(String.valueOf(service.getMaxPerEvent()));
             update = true;
-            editservices_BTN_update.setText("ביטול");
+            editservices_LBL_update.setText("ביטול");
+            editservices_BTN_update.setBackgroundResource(R.drawable.ic_cancel_color);
+
         } else {
             editservices_EDT_name.setText("");
             editservices_EDT_price.setText("");
             editservices_EDT_max.setText("");
             update = false;
-            editservices_BTN_update.setText("ערוך");
+            editservices_LBL_update.setText("ערוך");
+            editservices_BTN_update.setBackgroundResource(R.drawable.ic_edit_file);
+
 
         }
     }
@@ -161,6 +167,7 @@ public class FragmentUpdateService extends Fragment {
         editservices_EDT_name = view.findViewById(R.id.editservices_EDT_name);
         editservices_EDT_price = view.findViewById(R.id.editservices_EDT_price);
         editservices_EDT_max = view.findViewById(R.id.editservices_EDT_max);
+        editservices_LBL_update = view.findViewById(R.id.editservices_LBL_update);
         editservices_BTN_remove = view.findViewById(R.id.editservices_BTN_remove);
     }
 

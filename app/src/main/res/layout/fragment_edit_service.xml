@@ -43,30 +43,41 @@
                 android:lines="1"
                 android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/editservices_EDT_price"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="1234567890"
-                android:ems="10"
-                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/editservices_EDT_price"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
 
-                android:hint="מחיר"
-                android:inputType="number"
-                android:maxLength="10"
-                android:textColor="@color/white" />
+                    android:hint="מחיר"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/editservices_EDT_max"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:digits="1234567890"
-                android:ems="10"
-                android:gravity="center"
+                <EditText
+                    android:id="@+id/editservices_EDT_max"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
 
-                android:hint="כמות מקסימלית לאירוע"
-                android:inputType="number"
-                android:textColor="@color/white" />
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+
+                    android:hint="מקסימום לאירוע"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -74,42 +85,97 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/editservices_BTN_update"
-                    android:layout_width="100dp"
+
+                <LinearLayout
+                    android:id="@+id/editservices_LAY_update"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/ic_btn_shape_bottom"
-                    android:text="ערוך"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/editservices_BTN_save"
-                    android:layout_width="100dp"
+                    <Button
+                        android:id="@+id/editservices_BTN_update"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_edit_file"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/editservices_LBL_update"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="ערוך"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/editservices_LAY_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/editservices_BTN_remove"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+
+                        android:background="@drawable/ic_delete" />
+
+                    <TextView
+                        android:id="@+id/payment_LBL_cash"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="מחק"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/payment_LAY_cash"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_btn_shape_bottom"
-                    android:text="עדכן"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
 
-                    />
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/editservices_BTN_remove"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_btn_shape_bottom"
-                    android:text="מחק"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/editservices_BTN_save"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_save_color"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/editservices_LBL_save"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="שמור"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 

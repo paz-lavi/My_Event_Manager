@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,12 +57,13 @@ public class SettingActivity extends AppCompatActivity {
     private EditText setting_EDT_city;
     private EditText setting_EDT_lastbid;
 
-
+private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
     private TextView setting_LBL_name;
     private TextView setting_LBL_businessnumber;
     private TextView setting_LBL_phone;
     private TextView setting_LBL_address;
     private TextView setting_LBL_lasteceipt;
+    private TextView setting_LBL_save;
     private TextView setting_LBL_email;
     private Button setting_BTN_save;
     private Button setting_BTN_cancel;
@@ -99,7 +101,8 @@ public class SettingActivity extends AppCompatActivity {
         setting_EDT_lasteceipt.setHint(user.getLastReceiptNumber() + "");
         setting_EDT_lastbid.setHint(user.getLastBidNumber() + "");
         setting_EDT_email.setHint(user.getMail());
-        setting_BTN_save.setText("ערוך");
+        setting_LBL_save.setText("ערוך");
+        setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
         setting_SIG_pad.setVisibility(View.GONE);
 
         enabled(false);
@@ -169,12 +172,13 @@ public class SettingActivity extends AppCompatActivity {
         setting_BTN_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setting_BTN_cancel.setVisibility(View.GONE);
-                setting_BTN_save.setText("ערוך");
+                setting_LAY_cancel.setVisibility(View.GONE);
+                setting_LBL_save.setText("ערוך");
+                setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
                 setting_SIG_pad.setVisibility(View.GONE);
                 setting_IMG_pad.setVisibility(View.VISIBLE);
-                setting_BTN_clear.setVisibility(View.GONE);
-                setting_BTN_savesig.setVisibility(View.GONE);
+                setting_LAY_savesig.setVisibility(View.GONE);
+                setting_LAY_clear.setVisibility(View.GONE);
 
                 edit = false;
                 enabled(false);
@@ -218,8 +222,10 @@ public class SettingActivity extends AppCompatActivity {
         if (edit) {
             edit = false;
             enabled(false);
-            setting_BTN_cancel.setVisibility(View.GONE);
-            setting_BTN_save.setText("ערוך");
+            setting_LAY_cancel.setVisibility(View.GONE);
+            setting_LBL_save.setText("ערוך");
+            setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
+
             setting_SIG_pad.setVisibility(View.GONE);
             setting_IMG_pad.setVisibility(View.VISIBLE);
             setting_BTN_clear.setVisibility(View.GONE);
@@ -251,10 +257,11 @@ public class SettingActivity extends AppCompatActivity {
             enabled(true);
             setting_SIG_pad.setVisibility(View.VISIBLE);
             setting_IMG_pad.setVisibility(View.GONE);
-            setting_BTN_clear.setVisibility(View.VISIBLE);
-            setting_BTN_savesig.setVisibility(View.VISIBLE);
-            setting_BTN_cancel.setVisibility(View.VISIBLE);
-            setting_BTN_save.setText("שמור");
+            setting_LAY_clear.setVisibility(View.VISIBLE);
+            setting_LAY_savesig.setVisibility(View.VISIBLE);
+            setting_LAY_cancel.setVisibility(View.VISIBLE);
+            setting_LBL_save.setText("שמור");
+            setting_BTN_save.setBackgroundResource(R.drawable.ic_save_color);
             setting_EDT_name.setText(user.getName());
             setting_EDT_businessnumber.setText(user.getId());
             setting_EDT_phone.setText(user.getPhone());
@@ -392,6 +399,10 @@ public class SettingActivity extends AppCompatActivity {
         setting_BTN_savesig = findViewById(R.id.setting_BTN_savesig);
         setting_BTN_clear = findViewById(R.id.setting_BTN_clear);
         setting_IMG_pad = findViewById(R.id.setting_IMG_pad);
+        setting_LAY_cancel = findViewById(R.id.setting_LAY_cancel);
+        setting_LBL_save = findViewById(R.id.setting_LBL_save);
+        setting_LAY_clear = findViewById(R.id.setting_LAY_clear);
+        setting_LAY_savesig = findViewById(R.id.setting_LAY_savesig);
 
     }
 

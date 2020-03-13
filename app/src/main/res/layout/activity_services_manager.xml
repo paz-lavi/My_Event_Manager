@@ -42,32 +42,76 @@
         android:id="@+id/main_LAY_btns"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/main_BTN_new"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="הוסף שירות חדש"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/main_BTN_edit"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/main_LAY_new"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="ערוך שירות קיים"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_BTN_new"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_add_color"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/main_LBL_new"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="הוסף שירות חדש"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/setting_LAY_update"
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_BTN_edit"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_edit_file"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/setting_LBL_save"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="ערוך שירות קיים"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

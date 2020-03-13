@@ -49,6 +49,7 @@ public class FragmentInfo extends Fragment {
     private TextView event_LBL_name_context;
     private TextView event_LBL_date_context;
     private TextView event_LBL_status_context;
+    private TextView event_LBL_payment;
     private TextView event_LBL_phone_context;
     private TextView event_LBL_mail_context;
     private TextView event_LBL_startingtime_context;
@@ -56,7 +57,7 @@ public class FragmentInfo extends Fragment {
     private TextView event_LBL_amountleft_context;
     private TextView event_LBL_address_context;
     private Toolbar event_TOOL_toolbar;
-    private FloatingActionButton event_FAB_waze, event_FAB_more, event_FAB_confirm, event_FAB_call,event_FAB_cancel;
+    private FloatingActionButton event_FAB_waze, event_FAB_more, event_FAB_confirm, event_FAB_call, event_FAB_cancel;
     private float translationY = 100f;
 
 
@@ -121,6 +122,12 @@ public class FragmentInfo extends Fragment {
                     }
                 }
             });
+            event_LBL_payment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    event_BTN_payment.performClick();
+                }
+            });
         }
 
 
@@ -178,7 +185,8 @@ public class FragmentInfo extends Fragment {
                 closeMenu();
 
             }
-        });event_FAB_waze.setOnClickListener(new View.OnClickListener() {
+        });
+        event_FAB_waze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickOnWaze();
@@ -360,7 +368,7 @@ public class FragmentInfo extends Fragment {
         event_LBL_phone = view.findViewById(R.id.event_LBL_phone);
         event_LBL_mail = view.findViewById(R.id.event_LBL_mail);
         event_LBL_address_context = view.findViewById(R.id.event_LBL_address_context);
-       // event_LBL_address_context.setMovementMethod(new ScrollingMovementMethod());
+        // event_LBL_address_context.setMovementMethod(new ScrollingMovementMethod());
         event_LBL_mail_context.setMovementMethod(new ScrollingMovementMethod());
         event_LBL_startingtime = view.findViewById(R.id.event_LBL_startingtime);
         event_LBL_amount = view.findViewById(R.id.event_LBL_amount);
@@ -371,6 +379,7 @@ public class FragmentInfo extends Fragment {
         event_FAB_confirm = view.findViewById(R.id.event_FAB_confirm);
         event_FAB_cancel = view.findViewById(R.id.event_FAB_cancel);
         event_FAB_call = view.findViewById(R.id.event_FAB_call);
+        event_LBL_payment = view.findViewById(R.id.event_LBL_payment);
 
         return true;
 

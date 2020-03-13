@@ -49,7 +49,7 @@
 
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_expenses" />
+                    android:background="@drawable/ic_expenses_color" />
 
                 <TextView
                     android:id="@+id/menu_LBL_expenses"
@@ -80,7 +80,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_report"
+                    android:background="@drawable/ic_report_color"
                     android:gravity="center" />
 
                 <TextView
@@ -113,7 +113,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_file_download"
+                    android:background="@drawable/ic_file_download_color"
                     android:gravity="center" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_singout"
+                    android:background="@drawable/ic_logout_color"
                     android:gravity="center" />
 
                 <TextView
@@ -186,7 +186,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_vinyl"
+                    android:background="@drawable/ic_vinyl_color"
                     android:gravity="center" />
 
                 <TextView
@@ -218,7 +218,7 @@
                     android:layout_marginTop="20dp"
 
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_dj" />
+                    android:background="@drawable/ic_dj_color" />
 
                 <TextView
                     android:id="@+id/menu_LBL_myevents"
@@ -250,7 +250,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_bid_v2"
+                    android:background="@drawable/ic_bid_color"
                     android:gravity="center" />
 
                 <TextView
@@ -282,7 +282,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_setting_new"
+                    android:background="@drawable/ic_setting_color"
                     android:gravity="center" />
 
                 <TextView
