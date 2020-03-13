@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector"
+    tools:context=".SettingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/setting_TOOL_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_back_arrow" />
+
+    <TextView
+        android:id="@+id/setting_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/setting_TOOL_toolbar"
+        android:layout_centerHorizontal="true"
+        android:text="הגדרות העסק"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="28sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/setting_LAY_BTN"
+        android:layout_below="@id/setting_LBL_title"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="7dp"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarThumbVertical="@color/gray"
+        android:scrollbarTrackVertical="@color/black">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/setting_EDT_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="10dp"
+
+                        android:layout_marginTop="7dp"
+
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:hint="שם העסק"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_businessnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:digits="1234567890"
+                        android:gravity="center"
+                        android:hint="מספר עוסק פוטר"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:digits="0123456789"
+                        android:gravity="center"
+                        android:hint="טלפון"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:maxLength="10"
+                        android:textAlignment="gravity"
+                        android:textColor="@color/white"
+                        android:textDirection="rtl" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_street"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:hint="רחוב"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_house"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:hint="מספר בית"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:hint="עיר"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_lasteceipt"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:digits="1234567890"
+                        android:gravity="center"
+                        android:hint="מספר קבלה אחרונה"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_lastbid"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:digits="1234567890"
+                        android:gravity="center"
+                        android:hint="מספר הצעת מחיר אחרונה"
+                        android:inputType="number"
+                        android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/setting_EDT_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:hint="מייל"
+                        android:scrollbars="horizontal"
+                        android:singleLine="true"
+                        android:textColor="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+
+                        >
+
+                        <EditText
+                            android:id="@+id/setting_EDT_paypal"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="30dp"
+                            android:ellipsize="none"
+
+                            android:hint="PayPal Client ID"
+                            android:inputType="textPassword"
+                            android:scrollbars="horizontal"
+                            android:singleLine="true"
+                            android:textColor="@color/white" />
+
+                        <CheckBox
+                            android:id="@+id/setting_CB_paypal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:hint="הצג" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/setting_LBL_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="שם העסק"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_businessnumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="מספר עוסק פוטר"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="טלפון"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_street"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="רחוב"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_house"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="מספר בית"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="עיר"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_lasteceipt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:text="מספר קבלה אחרונה"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_lastbid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:text="מספר הצעת מחיר אחרונה"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="מייל"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/setting_LBL_name7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="PayPal Client ID"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="חתימה"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/setting_IMG_pad"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <com.github.gcacace.signaturepad.views.SignaturePad
+                android:id="@+id/setting_SIG_pad"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#FFF" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/setting_BTN_savesig"
+
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="שמור חתימה"
+                    android:textColor="@color/white"
+
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/setting_BTN_clear"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="ניקוי חתימה"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/setting_LAY_BTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/setting_BTN_save"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/ic_btn_shape_bottom"
+            android:text="שמור"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/setting_BTN_cancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_btn_shape_bottom"
+            android:text="ביטול"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

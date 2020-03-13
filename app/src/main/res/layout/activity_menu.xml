@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector"
+    tools:context=".Menu">
+
+    <TextView
+        android:id="@+id/menu_LBL_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="שלום"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/menu_LAY_btn"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_LBL_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/menu_BTN_expenses"
+
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape_left"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="ההוצאות \nשלי"
+                android:textColor="@color/white"
+
+
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/menu_BTN_reports"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape_left"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="דוחות\n שנתיים"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/menu_BTN_down"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape_left"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="הורדת \nקבצים"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/menu_BTN_logout"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape_left"
+                android:drawable="@drawable/ic_singout"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="התנתק"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/menu_BTN_myservices"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="השירותים \nשלי"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/menu_BTN_myevents"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="האירועים \nשלי "
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/menu_BTN_createnewevent"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="הצעת מחיר \nחדשה"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/menu_BTN_setting"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ic_btn_shape"
+                android:gravity="center"
+                android:shadowColor="#3F51B5"
+                android:shadowDx="12"
+
+                android:shadowDy="1"
+                android:shadowRadius="25"
+                android:text="הגדרות \nהעסק"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menu_LAY_btn"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/menu_LBL_events"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:scrollbars="vertical"
+            android:text="אירועים בשבוע הקרוב:"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/menu_LAY_no_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/main_card_selector"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/note_LBL_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="אין אירועים בשבוע הקרוב"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menu_LST_events"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

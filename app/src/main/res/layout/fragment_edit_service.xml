@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServicesManager">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/editservices_LBL_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="שירות קיים"
+
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editservices_EDT_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+
+                android:hint="שם השירות"
+                android:inputType="text"
+                android:lines="1"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/editservices_EDT_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="1234567890"
+                android:ems="10"
+                android:gravity="center"
+
+                android:hint="מחיר"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/editservices_EDT_max"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="1234567890"
+                android:ems="10"
+                android:gravity="center"
+
+                android:hint="כמות מקסימלית לאירוע"
+                android:inputType="number"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/editservices_BTN_update"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="ערוך"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/editservices_BTN_save"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="עדכן"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <Button
+                    android:id="@+id/editservices_BTN_remove"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="מחק"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

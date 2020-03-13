@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/expnote_CARD"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/expnote_LAY_lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_card_selector"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/expnote_LBL_purposecontext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="עבור"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expnote_LBL_amountcontext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="סכום"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expnote_LBL_datecontext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="תאריך"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/expnote_LBL_purpose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="עבור:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expnote_LBL_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="סכום:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expnote_LBL_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="תאריך:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/expnote_LBL_showmsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expnote_LAY_lin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="2dp"
+            android:text="לחץ להצגת הקבלה / חשבונית" />
+
+        <ImageView
+            android:id="@+id/expnote_IMG_invoice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/expnote_LBL_showmsg"
+            android:visibility="gone">
+
+        </ImageView>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/main_header_selector"
+    android:orientation="vertical"
+    tools:context=".CreateEvent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/create_TOOL_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/ic_back_arrow" />
+
+    <TextView
+        android:id="@+id/create_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_TOOL_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="יצירת אירוע חדש"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/create_BTN_createevent"
+        android:layout_below="@id/create_LBL_title"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:fadeScrollbars="false"
+        android:scrollbarSize="7dp"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbarThumbVertical="@color/black"
+        android:scrollbarTrackVertical="@color/gray">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/create_EDT_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:hint="שם הלקוח"
+                android:textColor="@color/white"
+
+                />
+
+            <EditText
+                android:id="@+id/create_EDT_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:ems="10"
+                android:hint="מספר טלפון"
+                android:inputType="number"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/create_EDT_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:ems="10"
+                android:hint="מייל"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/create_BTN_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="בחר תאריך"
+                    android:textColor="#FFF"
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/create_BTN_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_btn_shape_bottom"
+                    android:text="בחר שעה"
+                    android:textColor="#FFF"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/create_EDT_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:hint="כתובת"
+                android:textColor="@color/white"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:id="@+id/create_SW_rem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:enabled="true"
+                    android:text="בקשת תגובה מהלקוח בכל יום עד לאישור ההצעה"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:theme="@style/SCBSwitch" />
+
+
+                <EditText
+                    android:id="@+id/create_EDT_valid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1"
+                    android:hint="תוקף ההצעה (בימים)"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/create_LST_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/create_BTN_createevent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/ic_btn_shape_bottom"
+        android:text="צור אירוע"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+
+        />
+
+</RelativeLayout>

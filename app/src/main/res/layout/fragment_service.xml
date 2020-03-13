@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServicesManager">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/allservices_LBL_addnew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="הוספת שירות חדש "
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/allservices_EDT_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="שם השירות"
+                android:gravity="center"
+
+                android:inputType="text"
+                android:lines="1"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/allservices_EDT_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="1234567890"
+                android:ems="10"
+                android:gravity="center"
+
+                android:hint="מחיר"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/allservices_EDT_max"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="1234567890"
+                android:gravity="center"
+
+                android:ems="10"
+                android:hint="כמות מקסימלית לאירוע"
+                android:inputType="number"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/allservices_BTN_add"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_btn_shape_bottom"
+                android:text="הוסף"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
