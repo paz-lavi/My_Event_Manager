@@ -67,18 +67,37 @@
             android:inputType="phone"
             android:maxLength="10" />
 
-        <Button
-            android:id="@+id/login_BTN_continue"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="המשך"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/login_BTN_continue"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_sms"
+           />
+
+
+
+            <TextView
+                android:id="@+id/down_LAY_bid"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="שלח קוד חד פעמי"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

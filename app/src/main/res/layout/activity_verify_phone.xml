@@ -66,18 +66,36 @@
             android:inputType="phone"
             android:maxLength="10" />
 
-        <Button
-            android:id="@+id/buttonSignIn"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:text="הכנס"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonSignIn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_login"
+                />
+
+
+            <TextView
+                android:id="@+id/down_LAY_bid"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="היכנס"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
