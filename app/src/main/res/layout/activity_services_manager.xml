@@ -57,12 +57,12 @@
 
             <Button
                 android:id="@+id/main_BTN_new"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/ic_add_color"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -76,7 +76,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="הוסף שירות חדש"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -90,10 +90,10 @@
 
             <Button
                 android:id="@+id/main_BTN_edit"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginBottom="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/ic_edit_file"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -107,7 +107,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="ערוך שירות קיים"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

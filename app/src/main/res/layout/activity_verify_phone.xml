@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="28dp"
+            android:gravity="center"
             android:text="לכניסה הכנס את קוד האימות\nהחד פעמי שנשלח בSMS."
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/white"
@@ -47,7 +48,6 @@
             android:id="@+id/progressbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
             android:layout_gravity="center_horizontal"
 
             android:visibility="invisible" />
@@ -56,12 +56,11 @@
             android:id="@+id/editTextCode"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/progressbar"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-
             android:digits="0123456789"
             android:drawablePadding="10dp"
+            android:gravity="center"
             android:hint="הכנס קוד אימות"
             android:inputType="phone"
             android:maxLength="10" />
@@ -70,16 +69,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/buttonSignIn"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/ic_login"
-                />
+                android:gravity="center_horizontal" />
 
 
             <TextView
@@ -88,8 +87,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="היכנס"
                 android:gravity="center_horizontal"
+                android:text="היכנס"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

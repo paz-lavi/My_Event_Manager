@@ -2,12 +2,12 @@ package com.example.myapplication_finalproject;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,6 @@ import java.util.HashMap;
 public class DownloadFilesActivity extends AppCompatActivity {
     private Button down_BTN_expenses, down_BTN_bid, down_BTN_invoice;
     private Toolbar down_TOOL_toolbar;
-    private TextView down_LBL_invoice_path, down_LBL_bids_path, down_LBL_expenses_path;
     private File bid, invoice, expenses;
 
 
@@ -38,7 +37,6 @@ public class DownloadFilesActivity extends AppCompatActivity {
             dir.mkdirs();
 
         expenses = dir;
-        down_LBL_expenses_path.setText(expenses.getAbsolutePath());
 
         dir = new File(sdcard.getAbsolutePath() + File.separator + Constants.DIR_NAME +
                 File.separator + FilesManager.getInstance().getUser().getName(), "קבלות");
@@ -46,7 +44,6 @@ public class DownloadFilesActivity extends AppCompatActivity {
             dir.mkdirs();
 
         invoice = dir;
-        down_LBL_invoice_path.setText(invoice.getAbsolutePath());
 
         dir = new File(sdcard.getAbsolutePath() + File.separator + Constants.DIR_NAME +
                 File.separator + FilesManager.getInstance().getUser().getName(), "הצעות מחיר");
@@ -54,7 +51,6 @@ public class DownloadFilesActivity extends AppCompatActivity {
             dir.mkdirs();
 
         bid = dir;
-        down_LBL_bids_path.setText(bid.getAbsolutePath());
 
 
         down_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
@@ -68,19 +64,46 @@ public class DownloadFilesActivity extends AppCompatActivity {
         down_BTN_expenses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadAllExpensesInvoice();
+                allExpensesInvoiceClick();
             }
         });
         down_BTN_bid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                downloadAllBids();
+                allBidsClick();
             }
         });
         down_BTN_invoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                allInvoice();
+            }
+        });
+    }
+
+    private void allInvoice() {
+        alterRUsure(invoice, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 downloadAllInvoice();
+            }
+        });
+    }
+
+    private void allExpensesInvoiceClick() {
+        alterRUsure(expenses, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                downloadAllExpensesInvoice();
+            }
+        });
+    }
+
+    private void allBidsClick() {
+        alterRUsure(bid, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                downloadAllBids();
             }
         });
     }
@@ -88,7 +111,7 @@ public class DownloadFilesActivity extends AppCompatActivity {
     private void downloadAllInvoice() {
         ArrayList<MyEvent> events = SortAndFilter.filterByPaid(FilesManager.getInstance().getMyEvents(this));
         String s;
-        alter(invoice);
+        alterStart(invoice);
         for (MyEvent e : events
         ) {
             if (e.getInvocieURL() != null) {
@@ -102,7 +125,7 @@ public class DownloadFilesActivity extends AppCompatActivity {
     private void downloadAllBids() {
         ArrayList<MyEvent> events = FilesManager.getInstance().getMyEvents(this);
         String s;
-        alter(bid);
+        alterStart(bid);
         for (MyEvent e : events
         ) {
             if (e.getBidURL() != null) {
@@ -121,7 +144,7 @@ public class DownloadFilesActivity extends AppCompatActivity {
             return;
 
         String s = "";
-        alter(expenses);
+        alterStart(expenses);
         ArrayList<Expenses> temp = new ArrayList<>();
         for (String k : ex.keySet()) {
             for (String key : ex.get(k).keySet()) {
@@ -151,11 +174,21 @@ public class DownloadFilesActivity extends AppCompatActivity {
 
     }
 
-    private void alter(File file) {
+    private void alterStart(File file) {
         new AlertDialog.Builder(DownloadFilesActivity.this)
                 .setTitle("ההורדה התחילה")
-                .setMessage("ההורדה התחילה!\nהקבצים ישמרו בנתיב:\n" + file.getAbsolutePath())
+                .setMessage("הקבצים ישמרו בנתיב:\n" + file.getAbsolutePath())
                 .setPositiveButton("אישור", null)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+    }
+
+    private void alterRUsure(File file, DialogInterface.OnClickListener listener) {
+        new AlertDialog.Builder(DownloadFilesActivity.this)
+                .setTitle("להוריד קבצים?")
+                .setMessage("הקבצים ישמרו בנתיב:\n" + file.getAbsolutePath())
+                .setPositiveButton("התחל הורדה", listener)
+                .setNegativeButton("ביטול", null)
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
@@ -166,8 +199,6 @@ public class DownloadFilesActivity extends AppCompatActivity {
         down_BTN_bid = findViewById(R.id.down_BTN_bid);
         down_BTN_invoice = findViewById(R.id.down_BTN_invoice);
         down_TOOL_toolbar = findViewById(R.id.down_TOOL_toolbar);
-        down_LBL_expenses_path = findViewById(R.id.down_LBL_expenses_path);
-        down_LBL_bids_path = findViewById(R.id.down_LBL_bids_path);
-        down_LBL_invoice_path = findViewById(R.id.down_LBL_invoice_path);
+
     }
 }

@@ -403,7 +403,7 @@
                         android:layout_gravity="center_horizontal"
                         android:text="שמור חתימה"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -434,7 +434,7 @@
                         android:layout_gravity="center_horizontal"
                         android:text="ניקוי חתימה"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -463,8 +463,8 @@
 
             <Button
                 android:id="@+id/setting_BTN_cancel"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:background="@drawable/ic_cancel_color"
 
          />
@@ -477,7 +477,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="ביטול"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -492,8 +492,8 @@
 
             <Button
                 android:id="@+id/setting_BTN_save"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/ic_edit_file"
                 android:textColor="@color/white" />
@@ -506,7 +506,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="ערוך"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

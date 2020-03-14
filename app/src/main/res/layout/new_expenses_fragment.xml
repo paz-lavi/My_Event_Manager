@@ -52,22 +52,37 @@
             android:hint="סכום"
             android:inputType="numberDecimal" />
 
-        <Button
-            android:id="@+id/newexp_BTN_date"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@drawable/ic_btn_shape_bottom"
-            android:paddingLeft="20dp"
-            android:paddingTop="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
-            android:text="תאריך"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/newexp_BTN_date"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ic_calendar"
+
+
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/newexp_LBL_date"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="תאריך"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -76,8 +91,9 @@
         android:id="@+id/newexp_IMG_invoice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/newexp_BTN_save"
-        android:layout_below="@id/newexp_LAY_top" />
+        android:layout_above="@id/newexp_LAY_save"
+        android:layout_below="@id/newexp_LAY_top"
+        android:src="@drawable/ic_invoice_color" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newexp_FAB_addinvoice"
@@ -89,25 +105,37 @@
         android:src="@drawable/ic_photo_camera_black_24dp"
         app:backgroundTint="@color/colorPrimary" />
 
-    <Button
-        android:id="@+id/newexp_BTN_save"
+    <LinearLayout
+        android:id="@+id/newexp_LAY_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="206dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/ic_btn_shape_bottom"
-        android:gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="20dp"
-        android:text="שמור"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/newexp_BTN_save"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_save_color"
+
+            />
+
+        <TextView
+            android:id="@+id/newexp_LBL_save"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="שמור"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </RelativeLayout>

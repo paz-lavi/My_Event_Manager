@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,7 @@ public class NewExpenses extends Fragment {
     private ImageView newexp_IMG_invoice;
     private Button newexp_BTN_date;
     private Button newexp_BTN_save;
+    private TextView newexp_LBL_date;
     private FloatingActionButton newexp_FAB_addinvoice;
     private DatePickerDialog datePickerDialog;
     private View view;
@@ -124,7 +126,7 @@ public class NewExpenses extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 date = dayOfMonth + "/" + (month + 1) + "/" + year;
-                newexp_BTN_date.setText(date);
+                newexp_LBL_date.setText(date);
             }
         }, Integer.parseInt(datestr[2]), Integer.parseInt(datestr[1]) - 1, Integer.parseInt(datestr[0]));
 
@@ -350,6 +352,7 @@ public class NewExpenses extends Fragment {
         newexp_BTN_save = view.findViewById(R.id.newexp_BTN_save);
         newexp_FAB_addinvoice = view.findViewById(R.id.newexp_FAB_addinvoice);
         newexp_TOOL_toolbar = view.findViewById(R.id.newexp_TOOL_toolbar);
+        newexp_LBL_date = view.findViewById(R.id.newexp_LBL_date);
     }
 
 }

@@ -32,46 +32,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="שם השירות"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:hint="שם השירות"
                 android:inputType="text"
                 android:lines="1"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
                 <EditText
                     android:id="@+id/allservices_EDT_price"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="1234567890"
+                    android:layout_gravity="center_horizontal"
                     android:ems="10"
                     android:gravity="center"
-                    android:layout_margin="10dp"
-
                     android:hint="מחיר"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/allservices_EDT_max"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"
-                    android:layout_margin="10dp"
-
                     android:hint="מקסימום לאירוע"
                     android:inputType="number"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
 
 
             <LinearLayout
@@ -83,8 +78,8 @@
 
                 <Button
                     android:id="@+id/allservices_BTN_add"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/ic_add_color"
                   />
@@ -92,13 +87,12 @@
 
                 <TextView
                     android:id="@+id/editservices_LBL_update"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="הוסף"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>

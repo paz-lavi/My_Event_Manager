@@ -25,6 +25,7 @@
         android:layout_below="@id/eventviewer_TOOL_toolbar"
         android:layout_centerHorizontal="true"
         android:text="רשימת האירועים"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="28sp" />
 
