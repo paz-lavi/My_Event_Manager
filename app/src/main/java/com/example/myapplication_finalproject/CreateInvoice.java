@@ -140,9 +140,12 @@ public class CreateInvoice extends AbstractViewRenderer {
         invoice_name.setText(user.getName());
         invoice_number.setText("מספר עוסק פטור: " + user.getId());
         invoice_phone.setText("מספר טלפון: " + user.getPhone());
-        invoice_email.setText("דוא״ל: " + user.getMail());
-        invoice_address.setText("כתובת: " + user.getStreet() + " " + user.getHouseNumber()
+        invoice_email.setText(user.getMail());
+        //invoice_email.setText("דוא״ל: " + user.getMail());
+        invoice_address.setText(user.getStreet() + " " + user.getHouseNumber()
                 + " " + user.getCity());
+//        invoice_address.setText("כתובת: " + user.getStreet() + " " + user.getHouseNumber()
+//                + " " + user.getCity());
         invoice_mailcontext.setText(event.geteMail());
         invoice_addcontext.setText(event.getAddress());
         invoice_eventdatecontext.setText(event.getDate());
