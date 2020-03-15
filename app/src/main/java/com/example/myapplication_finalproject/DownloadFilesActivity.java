@@ -138,10 +138,10 @@ public class DownloadFilesActivity extends AppCompatActivity {
         alterStart(invoice);
         for (MyEvent e : events
         ) {
-            if (e.getInvocieURL() != null) {
-                s = "קבלה מספר -  " + e.getInvocieNumber() + " .pdf";
+            if (e.getCopyInvoiceURL() != null) {
+                s = "קבלה מספר -  " + e.getInvoiceNumber() + " .pdf";
                 if (!e.getBidURL().equals(""))
-                    downloadFile(s, invoice, e.getInvocieURL());
+                    downloadFile(s, invoice, e.getOriginalInvoiceURL());
             }
         }
     }
@@ -185,17 +185,18 @@ public class DownloadFilesActivity extends AppCompatActivity {
     }
 
     private void downloadFile(String fileName, File dir, String url) {
+        File f = new File(dir.getAbsolutePath() + File.separator + fileName);
+        if (!f.exists()) {
+            DownloadManager downloadManager = (DownloadManager) this.getSystemService(Context.DOWNLOAD_SERVICE);
+            Uri uri = Uri.parse(url);
+            DownloadManager.Request request = new DownloadManager.Request(uri);
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+            request.allowScanningByMediaScanner();
+            request.setDestinationUri(Uri.fromFile(f));
 
-        DownloadManager downloadManager = (DownloadManager) this.getSystemService(Context.DOWNLOAD_SERVICE);
-        Uri uri = Uri.parse(url);
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-        request.allowScanningByMediaScanner();
-        request.setDestinationUri(Uri.fromFile(new File(dir.getAbsolutePath() + File.separator + fileName)));
-
-        downloadManager.enqueue(request);
-
+            downloadManager.enqueue(request);
+        }
     }
 
     private void alterStart(File file) {

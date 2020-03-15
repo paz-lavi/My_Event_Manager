@@ -18,8 +18,16 @@ public class SendSms {
     public static void sendInvoice(MyEvent event) {
         String sb = "לצפיה בקבלה עבור האירוע בתאריך " +
                 event.getDate() +
-                "לחץ על הקישור הבא:\n " +
-                event.getInvocieURL();
+                " לחץ על הקישור הבא:\n " +
+                event.getOriginalInvoiceURL();
+        sendSmsMSG(sb, event.getCustomerPhone());
+    }
+
+    public static void sendCopyInvoice(MyEvent event) {
+        String sb = "לצפיה בקבלה עבור האירוע בתאריך " +
+                event.getDate() +
+                " לחץ על הקישור הבא:\n " +
+                event.getCopyInvoiceURL();
         sendSmsMSG(sb, event.getCustomerPhone());
     }
 

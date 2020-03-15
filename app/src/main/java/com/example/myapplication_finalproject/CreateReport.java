@@ -57,9 +57,9 @@ public class CreateReport extends AbstractViewRenderer {
         Log.d(TAG, "enter init");
 
         export_name.setText(user.getName());
-        export_number.setText(user.getId());
-        export_phone.setText(user.getPhone());
-        export_email.setText(user.getMail());
+        export_number.setText("עוסק פטור: " + user.getId());
+        export_phone.setText("טל: " + user.getPhone());
+        export_email.setText("דוא״ל: " + user.getMail());
         export_address.setText(user.getStreet() + " " + user.getHouseNumber() + " " + user.getCity());
         export_LBL_title.setText(TITLE + year + ":");
         export_LBL_date.setText(new SimpleDateFormat("d/M/yyyy").format(System.currentTimeMillis()));

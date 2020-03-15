@@ -39,7 +39,7 @@ import java.io.File;
 import java.math.BigDecimal;
 
 public class PayPalActivity extends AppCompatActivity {
-    private final String TAG = this.getClass().getSimpleName();
+    private final String TAG = this.getClass().getSimpleName() + "_LOG";
     private static final String CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_SANDBOX;
 
     // note that these credentials will differ between live & sandbox environments.
@@ -185,32 +185,29 @@ public class PayPalActivity extends AppCompatActivity {
     private void createInvoice() {
         FilesManager manager = FilesManager.getInstance();
         manager.newInvoice();
-        event.setInvocieNumber(manager.getUser().getLastReceiptNumber());
+        event.setInvoiceNumber(manager.getUser().getLastReceiptNumber());
         manager.updateEvent(this, event);
 
 
-        invoice = new CreateInvoice(this, event, Constants.INVOCIE, new CallBack_Invoice() {
-            @Override
-            public void ready() {
-                readyToCreate();
-            }
-        });
+        invoice = new CreateInvoice(this, event, Constants.INVOCIE);
 
-        readyToCreate();
+        readyToCreate(true);
     }
 
-    private void readyToCreate() {
+    private void readyToCreate(final boolean b) {
+
+
+        invoice.setOriginalOrCopy(b);
+        String subDir = b ? "מקור" : "העתק";
         File sdcard = this.getFilesDir();
         File dir = new File(sdcard.getAbsolutePath() + File.separator + FirebaseAuth.getInstance().getCurrentUser() +
-                File.separator + Constants.DIR_NAME + File.separator + Constants.INVOICES);
+                File.separator + Constants.DIR_NAME + File.separator + Constants.INVOICES + subDir);
 
         dir.mkdirs();
-
         PdfDocument doc = new PdfDocument(this);
         String title = "קבלה מספר " + FilesManager.getInstance().getUser().getLastReceiptNumber();
 // add as many pages as you have
         doc.addPage(invoice);
-
         doc.setRenderWidth(1500);
         doc.setRenderHeight(2115);
         doc.setOrientation(PdfDocument.A4_MODE.PORTRAIT);
@@ -223,7 +220,7 @@ public class PayPalActivity extends AppCompatActivity {
             @Override
             public void onComplete(File file) {
                 Log.i(PdfDocument.TAG_PDF_MY_XML, "Complete");
-                send(file);
+                send(file, b);
             }
 
             @Override
@@ -237,12 +234,14 @@ public class PayPalActivity extends AppCompatActivity {
 
     }
 
-    private void send(File pdf) {
 
+    private void send(File pdf, final boolean b) {
+
+        String subDir = b ? "מקור" : "העתק";
 
         Uri file = Uri.fromFile(pdf);
         final StorageReference riversRef = mStorageRef.child(FirebaseAuth.getInstance().getCurrentUser()
-                .getUid()).child(Constants.INVOICES).child(pdf.getName());
+                .getUid()).child(Constants.INVOICES).child(subDir).child(pdf.getName());
 
         riversRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -251,10 +250,17 @@ public class PayPalActivity extends AppCompatActivity {
                         riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                event.setInvocieURL(uri.toString());
-                                FilesManager.getInstance().updateEvent(PayPalActivity.this, event);
-                                SendSms.sendInvoice(event);
+                                if (b) {
+                                    event.setOriginalInvoiceURL(uri.toString());
+                                    SendSms.sendInvoice(event);
+                                    readyToCreate(false);
+                                } else {
+                                    event.setCopyInvoiceURL(uri.toString());
+                                    FilesManager.getInstance().updateEvent(PayPalActivity.this, event);
+
+                                }
                                 Log.d(TAG, "onSuccess: uri= " + uri.toString());
+                                Log.d(TAG, "url= " + event.getCopyInvoiceURL());
                             }
                         });
                     }
@@ -268,7 +274,7 @@ public class PayPalActivity extends AppCompatActivity {
     }
 
     private void resendClick() {
-        SendSms.sendInvoice(event);
+        SendSms.sendCopyInvoice(event);
         new AlertDialog.Builder(PayPalActivity.this)
                 .setTitle("נשלח")
                 .setMessage("קישור לקבלה נשלח ללקוח בהודעת sms")
@@ -352,7 +358,7 @@ public class PayPalActivity extends AppCompatActivity {
             payment_LBL_resend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    payment_LBL_resend.performClick();
+                    payment_BTN_resend.performClick();
                 }
             });
 

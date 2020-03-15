@@ -8,14 +8,56 @@
     android:layout_marginBottom="50dp"
     android:background="@color/white">
 
+    <LinearLayout
+        android:id="@+id/sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/invoice_LAY_center"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="100dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="חתימה:"
+            android:textColor="#F000"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/invoice_IMG_sig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/invoice_LBL_date"
+        android:id="@+id/invoice_LBL_date_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
+        android:text="תאריך:"
+        android:textColor="@color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/invoice_LBL_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@id/invoice_LBL_date_title"
         android:text="תאריך"
         android:textColor="@color/black"
         android:textSize="12sp" />
@@ -26,16 +68,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/invoice_LBL_date"
-        android:layout_marginTop="20dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="5dp">
 
         <TextView
             android:id="@+id/invoice_number"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:gravity="right"
             android:text="מספר עוסק פטור"
             android:textColor="#F000" />
 
@@ -43,38 +87,40 @@
             android:id="@+id/invoice_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:gravity="right"
             android:text="שם העסק"
-            android:textColor="#F000" />
+            android:textColor="#F000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line1">
+        android:layout_below="@id/line1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
         <TextView
             android:id="@+id/invoice_phone"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:gravity="right"
             android:text="טלפון"
             android:textColor="#F000" />
 
         <TextView
             android:id="@+id/invoice_email"
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:gravity="right"
             android:text=" מייל"
             android:textColor="#F000" />
     </LinearLayout>
@@ -83,24 +129,37 @@
         android:id="@+id/line3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/line2">
+        android:layout_below="@id/line2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
+        <TextView
+            android:id="@+id/invoice_LBL_original"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="מקור "
+            android:textColor="#F000"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/invoice_address"
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_weight="1"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:gravity="right"
             android:text="כתובת "
             android:textColor="#F000" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/line4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line3"
         android:layout_centerHorizontal="true"
@@ -110,10 +169,11 @@
         <TextView
             android:id="@+id/invoice_invoicenumbercontext"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:layout_weight="1"
+            android:gravity="right"
             android:text=" מספר קבלה "
             android:textColor="#F000"
             android:textSize="18dp"
@@ -121,80 +181,13 @@
 
         <TextView
             android:id="@+id/invoice_invoicenumber"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
             android:text="קבלה מספר: "
-            android:textColor="#F000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/invoice_customercontext"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
-            android:text=" שם לקוח "
-            android:textColor="#F000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/invoice_customer"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
-            android:text="שם הלקוח: "
-            android:textColor="#F000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line30"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/invoice_customerphonecontext"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
-            android:text=" טלפון "
-            android:textColor="#F000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/invoice_customerphone"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="clip_horizontal|center_horizontal"
-            android:text="טלפון: "
             android:textColor="#F000"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -205,15 +198,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/total"
-        android:layout_below="@id/line31"
+        android:layout_below="@id/costumer_info"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/ic_lay_stroke"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/line5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/line31"
-            android:layout_marginTop="20dp">
+            android:background="@drawable/ic_lay_stroke_gray"
+            android:padding="15dp">
 
 
             <TextView
@@ -227,6 +224,7 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -240,6 +238,7 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -252,6 +251,7 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -263,6 +263,7 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -284,7 +285,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit1"
@@ -297,7 +299,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count1"
@@ -309,7 +312,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description1"
@@ -321,7 +325,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -343,7 +348,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit2"
@@ -356,7 +362,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count2"
@@ -368,7 +375,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description2"
@@ -380,7 +388,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -402,7 +411,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit3"
@@ -415,7 +425,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count3"
@@ -427,7 +438,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description3"
@@ -439,7 +451,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -461,7 +474,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit4"
@@ -474,7 +488,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count4"
@@ -486,7 +501,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description4"
@@ -498,7 +514,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -520,7 +537,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit5"
@@ -533,7 +551,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count5"
@@ -545,7 +564,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description5"
@@ -557,7 +577,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -579,7 +600,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit6"
@@ -592,7 +614,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count6"
@@ -604,7 +627,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description6"
@@ -616,7 +640,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -637,7 +662,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit7"
@@ -650,7 +676,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count7"
@@ -662,7 +689,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description7"
@@ -674,7 +702,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -695,7 +724,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit8"
@@ -708,7 +738,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count8"
@@ -720,7 +751,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description8"
@@ -732,7 +764,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -753,7 +786,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit9"
@@ -766,7 +800,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count9"
@@ -778,7 +813,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description9"
@@ -790,7 +826,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -811,7 +848,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit11"
@@ -824,7 +862,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count11"
@@ -836,7 +875,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description11"
@@ -848,7 +888,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -869,7 +910,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit12"
@@ -882,7 +924,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count12"
@@ -894,7 +937,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description12"
@@ -906,7 +950,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -928,7 +973,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit13"
@@ -941,7 +987,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count13"
@@ -953,7 +1000,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description13"
@@ -965,7 +1013,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -987,7 +1036,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit14"
@@ -1000,7 +1050,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count14"
@@ -1012,7 +1063,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description14"
@@ -1024,7 +1076,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -1046,7 +1099,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit15"
@@ -1059,7 +1113,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count15"
@@ -1071,7 +1126,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description15"
@@ -1083,7 +1139,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -1105,7 +1162,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="סה״כ "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_priceperunit16"
@@ -1118,7 +1176,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="מחיר ליחידה"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_count16"
@@ -1130,7 +1189,8 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="כמות "
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/invoice_description16"
@@ -1142,23 +1202,220 @@
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="תיאור"
                 android:textColor="#F000"
-                android:visibility="invisible" />
+                android:textSize="12sp"
+                android:visibility="gone" />
         </LinearLayout>
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/costumer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line4"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="3dp"
+
+        android:background="@drawable/ic_lay_stroke"
+        android:layout_centerHorizontal="true">
+
+
+        <LinearLayout
+            android:id="@+id/line30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="right"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/invoice_customerphonecontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" טלפון "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/invoice_customerphone"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text="טלפון: "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_mailcontext"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" מייל "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_mail"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text="דו״אל: "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_customercontext"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" שם לקוח "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_customer"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="שם הלקוח: "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginRight="7dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/invoice_addcontext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" כתובת"
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/invoice_add"
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text="כתובת: "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_timecontext"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" שעה:"
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_time"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text="שעה:"
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_eventdatecontext"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="7dp"
+                android:gravity="right"
+                android:text=" תאריך "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/invoice_eventdate"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="תאריך האירוע: "
+                android:textColor="#F000"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:layout_marginRight="7dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/total"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="right"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="30dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/ic_lay_stroke"
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <LinearLayout
             android:id="@+id/line13"
@@ -1291,34 +1548,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/sign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/invoice_LAY_center"
-        android:layout_alignParentLeft="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="100dp"
-        android:orientation="vertical">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:text="חתימה:"
-            android:textColor="#F000"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/invoice_IMG_sig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="visible" />
-
-
-    </LinearLayout>
 
 </RelativeLayout>

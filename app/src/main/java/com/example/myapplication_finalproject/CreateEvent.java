@@ -170,13 +170,7 @@ public class CreateEvent extends AppCompatActivity {
         Log.d(TAG, " enter create bit");
 
 
-        invoice = new CreateInvoice(this, event, Constants.BID, new CallBack_Invoice() {
-            @Override
-            public void ready() {
-                Log.d(TAG, " ready");
-                readyToCreate(event);
-            }
-        });
+        invoice = new CreateInvoice(this, event, Constants.BID);
         readyToCreate(event);
 
 
@@ -327,7 +321,7 @@ public class CreateEvent extends AppCompatActivity {
         create_LBL_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                create_LBL_date.performClick();
+                create_BTN_date.performClick();
             }
         });
         create_LBL_createevent.setOnClickListener(new View.OnClickListener() {

@@ -35,6 +35,7 @@ public class CreateInvoice extends AbstractViewRenderer {
     private TextView invoice_count2;
     private TextView invoice_description2;
     private TextView invoice_total3;
+    private TextView invoice_mailcontext;
     private TextView invoice_priceperunit3;
     private TextView invoice_count3;
     private TextView invoice_description3;
@@ -96,18 +97,20 @@ public class CreateInvoice extends AbstractViewRenderer {
     private TextView invoice_paiedcash;
     private TextView invoice_paiedpaypal;
     private TextView invoice_LBL_date;
+    private TextView invoice_LBL_original;
+    private TextView invoice_eventdatecontext;
+    private TextView invoice_timecontext;
+    private TextView invoice_addcontext;
     private ImageView invoice_IMG_sig;
-    private CallBack_Invoice callBack_invoice;
 
     private MyEvent event;
     private User user;
     private final String TAG = CreateInvoice.class.getSimpleName() + "LOG";
 
-    public CreateInvoice(final Context ctx, MyEvent event, final boolean type, CallBack_Invoice callBack_invoice) {
+    public CreateInvoice(final Context ctx, MyEvent event, final boolean type) {
         super(ctx, R.layout.invoice);
         this.event = event;
         this.user = FilesManager.getInstance().getUser();
-        this.callBack_invoice = callBack_invoice;
         initView(_view);
         initInvoice(type);
 
@@ -123,15 +126,27 @@ public class CreateInvoice extends AbstractViewRenderer {
         }
     }
 
+    public void setOriginalOrCopy(boolean original) {
+        if (original)
+            invoice_LBL_original.setText("מקור");
+        else
+            invoice_LBL_original.setText("העתק");
+
+    }
+
     private void initInvoice(boolean type) {
         Log.d(TAG, "enter init");
 
         invoice_name.setText(user.getName());
-        invoice_number.setText(user.getId());
-        invoice_phone.setText(user.getPhone());
-        invoice_email.setText(user.getMail());
-        invoice_address.setText(user.getStreet() + " " + user.getHouseNumber()
+        invoice_number.setText("מספר עוסק פטור: " + user.getId());
+        invoice_phone.setText("מספר טלפון: " + user.getPhone());
+        invoice_email.setText("דוא״ל: " + user.getMail());
+        invoice_address.setText("כתובת: " + user.getStreet() + " " + user.getHouseNumber()
                 + " " + user.getCity());
+        invoice_mailcontext.setText(event.geteMail());
+        invoice_addcontext.setText(event.getAddress());
+        invoice_eventdatecontext.setText(event.getDate());
+        invoice_timecontext.setText(event.getStartingTime());
         invoice_customercontext.setText(event.getCustomerName());
         invoice_customerphonecontext.setText(event.getCustomerPhone());
         invoice_totaltopaycontext.setText(event.getTotalPrice() + "");
@@ -307,7 +322,7 @@ public class CreateInvoice extends AbstractViewRenderer {
         invoice_total6.setVisibility(View.VISIBLE);
         invoice_priceperunit6.setVisibility(View.VISIBLE);
         invoice_count6.setVisibility(View.VISIBLE);
-        invoice_description7.setVisibility(View.VISIBLE);
+        invoice_description6.setVisibility(View.VISIBLE);
     }
 
     private void setLine7() {
@@ -504,6 +519,11 @@ public class CreateInvoice extends AbstractViewRenderer {
         invoice_paiedpaypal = view.findViewById(R.id.invoice_paiedpaypal);
         invoice_IMG_sig = view.findViewById(R.id.invoice_IMG_sig);
         invoice_LBL_date = view.findViewById(R.id.invoice_LBL_date);
+        invoice_LBL_original = view.findViewById(R.id.invoice_LBL_original);
+        invoice_mailcontext = view.findViewById(R.id.invoice_mailcontext);
+        invoice_eventdatecontext = view.findViewById(R.id.invoice_eventdatecontext);
+        invoice_timecontext = view.findViewById(R.id.invoice_timecontext);
+        invoice_addcontext = view.findViewById(R.id.invoice_addcontext);
 
 
     }

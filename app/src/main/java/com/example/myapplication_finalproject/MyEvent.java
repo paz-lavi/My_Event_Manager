@@ -19,8 +19,9 @@ public class MyEvent {
     private int validFor_Days;
     private String[] dateSplit;
     private Payment payment;
-    private String invocieURL;
-    private int invocieNumber;
+    private String originalInvoiceURL;
+    private String copyInvoiceURL;
+    private int invoiceNumber;
     private String bidURL;
     private int bidNumber;
     private boolean remainder;
@@ -41,12 +42,12 @@ public class MyEvent {
         return this;
     }
 
-    public int getInvocieNumber() {
-        return invocieNumber;
+    public int getInvoiceNumber() {
+        return invoiceNumber;
     }
 
-    public MyEvent setInvocieNumber(int invocieNumber) {
-        this.invocieNumber = invocieNumber;
+    public MyEvent setInvoiceNumber(int invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
         return this;
     }
 
@@ -68,12 +69,21 @@ public class MyEvent {
         return this;
     }
 
-    public String getInvocieURL() {
-        return invocieURL;
+    public String getOriginalInvoiceURL() {
+        return originalInvoiceURL;
     }
 
-    public MyEvent setInvocieURL(String invocieURL) {
-        this.invocieURL = invocieURL;
+    public MyEvent setOriginalInvoiceURL(String invoiceURL) {
+        this.originalInvoiceURL = invoiceURL;
+        return this;
+    }
+
+    public String getCopyInvoiceURL() {
+        return copyInvoiceURL;
+    }
+
+    public MyEvent setCopyInvoiceURL(String copyInvoiceURL) {
+        this.copyInvoiceURL = copyInvoiceURL;
         return this;
     }
 

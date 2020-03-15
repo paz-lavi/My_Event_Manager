@@ -460,7 +460,8 @@ public class FilesManager {
 
         UpdateEventThread thread = new UpdateEventThread(event);
         events.get(event.getYear()).get(event.getMonth()).get(event.getDay()).get(event.getCustomerPhone()
-                + event.getStartingTime()).setInvocieURL(event.getInvocieURL()).setInvocieNumber(event.getInvocieNumber());
+                + event.getStartingTime()).setOriginalInvoiceURL(event.getOriginalInvoiceURL()).setInvoiceNumber(event.getInvoiceNumber())
+                .setCopyInvoiceURL(event.getCopyInvoiceURL());
         Thread t = new Thread(thread);
         t.setPriority(Thread.MAX_PRIORITY);
         t.run();
