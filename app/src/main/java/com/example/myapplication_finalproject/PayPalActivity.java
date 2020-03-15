@@ -55,7 +55,7 @@ public class PayPalActivity extends AppCompatActivity {
             .merchantName("My Event Manager");
 
 
-    private Button payment_BTN_cash, payment_BTN_resend,payment_BTN_paypal;
+    private Button payment_BTN_cash, payment_BTN_resend, payment_BTN_paypal;
     private TextView payment_LBL_totalamount;
     private TextView payment_LBL_paidamount;
     private TextView payment_LBL_leftamount;
@@ -79,12 +79,6 @@ public class PayPalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pay_pal_v2);
         findViews();
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        payment_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         String str = getIntent().getExtras().getString(Constants.EVENT_TO_PAY);
         if (str != null) {
@@ -101,102 +95,11 @@ public class PayPalActivity extends AppCompatActivity {
         startService(intent);
 
         setTextViews();
+        setButtons();
 
-        if (event.getPayment().getAmountleft() == 0) {
-            payment_LAY_resend.setVisibility(View.VISIBLE);
-            payment_BTN_paypal.setVisibility(View.GONE);
-            payment_LBL_res.setVisibility(View.GONE);
-            payment_LAY_cash.setVisibility(View.GONE);
-            payment_EDT_cash.setVisibility(View.GONE);
-            payment_BTN_resend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SendSms.sendInvoice(event);
-                    new AlertDialog.Builder(PayPalActivity.this)
-                            .setTitle("נשלח")
-                            .setMessage("קישור לקבלה נשלח ללקוח בהודעת sms")
-                            .setPositiveButton("אישור", null)
-                            .setIcon(android.R.drawable.ic_dialog_info)
-                            .show();
-                }
-            });
-            payment_LBL_resend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    payment_LBL_resend.performClick();
-                }
-            });
-
-        }
-
-
-        payment_BTN_paypal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (event.getPayment().getAmountleft() == 0)
-                    return;
-
-                PayPalPayment payment = payment();
-
-                Intent intent = new Intent(PayPalActivity.this, PaymentActivity.class);
-
-                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
-
-                startActivityForResult(intent, REQUEST_CODE_PAYMENT);
-
-
-            }
-        });
-
-        payment_BTN_cash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (event.getPayment().getAmountleft() == 0)
-                    return;
-                try {
-                    final int cash = Integer.parseInt(payment_EDT_cash.getText().toString().trim());
-                    if (cash <= event.getPayment().getAmountleft())
-                        new AlertDialog.Builder(PayPalActivity.this)
-                                .setTitle("קבלת תשלום")
-                                .setMessage("לאשר קבלת תשלום במזומן ע״ס " + cash + "₪?")
-                                .setPositiveButton("אישור", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        event.getPayment().payWithCash(cash);
-                                        setTextViews();
-                                        payment_EDT_cash.setText("");
-                                        FilesManager.getInstance().updateEventPayment(event, PayPalActivity.this);
-                                        if (event.getPayment().getAmountleft() == 0)
-                                            createInvoice();
-                                    }
-                                }).setNegativeButton("ביטול", null)
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
-                    else {
-                        new AlertDialog.Builder(PayPalActivity.this)
-                                .setTitle("שגיאה")
-                                .setMessage("הסכום שהוזן גבוה מהסכום שנותר לתשלום")
-                                .setPositiveButton("אישור", null)
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
-                    }
-                } catch (NumberFormatException e) {
-
-                }
-
-
-            }
-        });
-        payment_LBL_cash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                payment_BTN_cash.performClick();
-            }
-        });
 
     }
+
 
     private void setTextViews() {
         payment_LBL_totalamount.setText(String.valueOf(event.getPayment().getTotalAmount()));
@@ -363,6 +266,121 @@ public class PayPalActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void resendClick() {
+        SendSms.sendInvoice(event);
+        new AlertDialog.Builder(PayPalActivity.this)
+                .setTitle("נשלח")
+                .setMessage("קישור לקבלה נשלח ללקוח בהודעת sms")
+                .setPositiveButton("אישור", null)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+    }
+
+    private void paypalClick() {
+        if (event.getPayment().getAmountleft() == 0)
+            return;
+
+        PayPalPayment payment = payment();
+
+        Intent intent = new Intent(PayPalActivity.this, PaymentActivity.class);
+
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+
+        startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+
+    }
+
+    private void cashClick() {
+        if (event.getPayment().getAmountleft() == 0)
+            return;
+        try {
+            final int cash = Integer.parseInt(payment_EDT_cash.getText().toString().trim());
+            if (cash <= event.getPayment().getAmountleft())
+                new AlertDialog.Builder(PayPalActivity.this)
+                        .setTitle("קבלת תשלום")
+                        .setMessage("לאשר קבלת תשלום במזומן ע״ס " + cash + "₪?")
+                        .setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                event.getPayment().payWithCash(cash);
+                                setTextViews();
+                                payment_EDT_cash.setText("");
+                                FilesManager.getInstance().updateEventPayment(event, PayPalActivity.this);
+                                if (event.getPayment().getAmountleft() == 0)
+                                    createInvoice();
+                            }
+                        }).setNegativeButton("ביטול", null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            else {
+                new AlertDialog.Builder(PayPalActivity.this)
+                        .setTitle("שגיאה")
+                        .setMessage("הסכום שהוזן גבוה מהסכום שנותר לתשלום")
+                        .setPositiveButton("אישור", null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        } catch (NumberFormatException e) {
+
+        }
+
+    }
+
+    private void setButtons() {
+        payment_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        if (event.getPayment().getAmountleft() == 0) {
+            payment_LAY_resend.setVisibility(View.VISIBLE);
+            payment_BTN_paypal.setVisibility(View.GONE);
+            payment_LBL_res.setVisibility(View.GONE);
+            payment_LAY_cash.setVisibility(View.GONE);
+            payment_EDT_cash.setVisibility(View.GONE);
+            payment_BTN_resend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    resendClick();
+                }
+            });
+            payment_LBL_resend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    payment_LBL_resend.performClick();
+                }
+            });
+
+        } else {
+            payment_BTN_paypal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    paypalClick();
+
+                }
+            });
+
+            payment_BTN_cash.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cashClick();
+
+                }
+            });
+            payment_LBL_cash.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    payment_BTN_cash.performClick();
+                }
+            });
+        }
+    }
+
 
     private void findViews() {
         payment_BTN_paypal = findViewById(R.id.payment_BTN_paypal);

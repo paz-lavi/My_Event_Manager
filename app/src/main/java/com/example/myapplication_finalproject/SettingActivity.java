@@ -1,6 +1,5 @@
 package com.example.myapplication_finalproject;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -44,8 +43,6 @@ import java.io.OutputStream;
 public class SettingActivity extends AppCompatActivity {
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
     private EditText setting_EDT_name;
     private EditText setting_EDT_businessnumber;
     private EditText setting_EDT_phone;
@@ -57,14 +54,17 @@ public class SettingActivity extends AppCompatActivity {
     private EditText setting_EDT_city;
     private EditText setting_EDT_lastbid;
 
-private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
+    private LinearLayout setting_LAY_cancel, setting_LAY_clear, setting_LAY_savesig;
     private TextView setting_LBL_name;
     private TextView setting_LBL_businessnumber;
     private TextView setting_LBL_phone;
     private TextView setting_LBL_address;
     private TextView setting_LBL_lasteceipt;
+    private TextView setting_LBL_savesig;
+    private TextView setting_LBL_clear;
     private TextView setting_LBL_save;
     private TextView setting_LBL_email;
+    private TextView setting_LBL_cancel;
     private Button setting_BTN_save;
     private Button setting_BTN_cancel;
     private SignaturePad setting_SIG_pad;
@@ -85,13 +85,16 @@ private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
         setContentView(R.layout.activity_setting);
         findViews();
         User user = FilesManager.getInstance().getUser();
-        setting_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         glide();
+        setTexts(user);
+        enabled(false);
+
+
+        setButtons();
+    }
+
+
+    private void setTexts(User user) {
         setting_EDT_name.setHint(user.getName());
         setting_EDT_businessnumber.setHint(user.getId());
         setting_EDT_phone.setHint(user.getPhone());
@@ -105,96 +108,40 @@ private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
         setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
         setting_SIG_pad.setVisibility(View.GONE);
 
+    }
+
+    private void saveClick() {
+        Bitmap signatureBitmap = setting_SIG_pad.getSignatureBitmap();
+        if (addJpgSignatureToGallery(signatureBitmap)) {
+            Toast.makeText(SettingActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(SettingActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void cancelClick() {
+        setting_LAY_cancel.setVisibility(View.GONE);
+        setting_LBL_save.setText("ערוך");
+        setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
+        setting_SIG_pad.setVisibility(View.GONE);
+        setting_IMG_pad.setVisibility(View.VISIBLE);
+        setting_LAY_savesig.setVisibility(View.GONE);
+        setting_LAY_clear.setVisibility(View.GONE);
+
+        edit = false;
         enabled(false);
-
-
-        //disable both buttons at start
-        setting_BTN_savesig.setEnabled(false);
-        setting_BTN_clear.setEnabled(false);
-
-
-        setting_SIG_pad.setOnSignedListener(new SignaturePad.OnSignedListener() {
-            @Override
-            public void onStartSigning() {
-
-            }
-
-            @Override
-            public void onSigned() {
-                setting_BTN_savesig.setEnabled(true);
-                setting_BTN_clear.setEnabled(true);
-            }
-
-            @Override
-            public void onClear() {
-                setting_BTN_savesig.setEnabled(false);
-                setting_BTN_clear.setEnabled(false);
-            }
-        });
-
-        setting_BTN_savesig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bitmap signatureBitmap = setting_SIG_pad.getSignatureBitmap();
-                if (addJpgSignatureToGallery(signatureBitmap)) {
-                    Toast.makeText(SettingActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(SettingActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-        setting_BTN_clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setting_SIG_pad.clear();
-            }
-        });
-
-
-        setting_CB_paypal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
-                    setting_EDT_paypal.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                else
-                    setting_EDT_paypal.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-            }
-        });
-        setting_BTN_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveData();
-            }
-        });
-
-        setting_BTN_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setting_LAY_cancel.setVisibility(View.GONE);
-                setting_LBL_save.setText("ערוך");
-                setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
-                setting_SIG_pad.setVisibility(View.GONE);
-                setting_IMG_pad.setVisibility(View.VISIBLE);
-                setting_LAY_savesig.setVisibility(View.GONE);
-                setting_LAY_clear.setVisibility(View.GONE);
-
-                edit = false;
-                enabled(false);
-                glide();
-                setting_EDT_name.setHint(FilesManager.getInstance().getUser().getName());
-                setting_EDT_businessnumber.setHint(FilesManager.getInstance().getUser().getId());
-                setting_EDT_phone.setHint(FilesManager.getInstance().getUser().getPhone());
-                setting_EDT_street.setHint(FilesManager.getInstance().getUser().getStreet());
-                setting_EDT_house.setHint(FilesManager.getInstance().getUser().getHouseNumber());
-                setting_EDT_city.setHint(FilesManager.getInstance().getUser().getCity());
-                setting_EDT_lasteceipt.setHint(FilesManager.getInstance().getUser().getLastReceiptNumber() + "");
-                setting_EDT_lastbid.setHint(FilesManager.getInstance().getUser().getLastBidNumber() + "");
-                setting_EDT_email.setHint(FilesManager.getInstance().getUser().getMail());
-                setting_EDT_paypal.setHint(FilesManager.getInstance().getUser().getPaypalClientID());
-            }
-        });
+        glide();
+        setting_EDT_name.setHint(FilesManager.getInstance().getUser().getName());
+        setting_EDT_businessnumber.setHint(FilesManager.getInstance().getUser().getId());
+        setting_EDT_phone.setHint(FilesManager.getInstance().getUser().getPhone());
+        setting_EDT_street.setHint(FilesManager.getInstance().getUser().getStreet());
+        setting_EDT_house.setHint(FilesManager.getInstance().getUser().getHouseNumber());
+        setting_EDT_city.setHint(FilesManager.getInstance().getUser().getCity());
+        setting_EDT_lasteceipt.setHint(FilesManager.getInstance().getUser().getLastReceiptNumber() + "");
+        setting_EDT_lastbid.setHint(FilesManager.getInstance().getUser().getLastBidNumber() + "");
+        setting_EDT_email.setHint(FilesManager.getInstance().getUser().getMail());
+        setting_EDT_paypal.setHint(FilesManager.getInstance().getUser().getPaypalClientID());
     }
 
     private void glide() {
@@ -218,14 +165,12 @@ private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
 
     private void saveData() {
         User user = FilesManager.getInstance().getUser();
-
         if (edit) {
             edit = false;
             enabled(false);
             setting_LAY_cancel.setVisibility(View.GONE);
             setting_LBL_save.setText("ערוך");
             setting_BTN_save.setBackgroundResource(R.drawable.ic_edit_file);
-
             setting_SIG_pad.setVisibility(View.GONE);
             setting_IMG_pad.setVisibility(View.VISIBLE);
             setting_BTN_clear.setVisibility(View.GONE);
@@ -372,6 +317,101 @@ private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
         SettingActivity.this.sendBroadcast(mediaScanIntent);
     }
 
+    private void setButtons() {
+        //disable both buttons at start
+        setting_BTN_savesig.setEnabled(false);
+        setting_BTN_clear.setEnabled(false);
+
+
+        setting_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        setting_SIG_pad.setOnSignedListener(new SignaturePad.OnSignedListener() {
+            @Override
+            public void onStartSigning() {
+
+            }
+
+            @Override
+            public void onSigned() {
+                setting_BTN_savesig.setEnabled(true);
+                setting_BTN_clear.setEnabled(true);
+            }
+
+            @Override
+            public void onClear() {
+                setting_BTN_savesig.setEnabled(false);
+                setting_BTN_clear.setEnabled(false);
+            }
+        });
+
+        setting_BTN_savesig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveClick();
+            }
+        });
+        setting_BTN_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setting_SIG_pad.clear();
+            }
+        });
+
+
+        setting_CB_paypal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    setting_EDT_paypal.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                else
+                    setting_EDT_paypal.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        });
+        setting_BTN_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
+
+        setting_BTN_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelClick();
+            }
+        });
+
+        setting_LBL_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setting_BTN_save.performClick();
+            }
+        });
+        setting_LBL_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setting_BTN_cancel.performClick();
+            }
+        });
+        setting_LBL_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setting_BTN_clear.performClick();
+            }
+        });
+        setting_LBL_savesig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setting_BTN_savesig.performClick();
+            }
+        });
+    }
+
 
     private void findViews() {
         setting_EDT_name = findViewById(R.id.setting_EDT_name);
@@ -403,6 +443,9 @@ private LinearLayout setting_LAY_cancel,setting_LAY_clear,setting_LAY_savesig;
         setting_LBL_save = findViewById(R.id.setting_LBL_save);
         setting_LAY_clear = findViewById(R.id.setting_LAY_clear);
         setting_LAY_savesig = findViewById(R.id.setting_LAY_savesig);
+        setting_LBL_cancel = findViewById(R.id.setting_LBL_cancel);
+        setting_LBL_clear = findViewById(R.id.setting_LBL_clear);
+        setting_LBL_savesig = findViewById(R.id.setting_LBL_savesig);
 
     }
 

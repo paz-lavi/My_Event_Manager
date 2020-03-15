@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class DownloadFilesActivity extends AppCompatActivity {
     private Button down_BTN_expenses, down_BTN_bid, down_BTN_invoice;
     private Toolbar down_TOOL_toolbar;
     private File bid, invoice, expenses;
+    private TextView down_LBL_invoice, down_LBL_expenses, down_LBL_bid;
 
 
     @Override
@@ -52,6 +54,10 @@ public class DownloadFilesActivity extends AppCompatActivity {
 
         bid = dir;
 
+        setButtons();
+    }
+
+    private void setButtons() {
 
         down_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
         down_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -77,6 +83,24 @@ public class DownloadFilesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 allInvoice();
+            }
+        });
+        down_LBL_invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                down_BTN_invoice.performClick();
+            }
+        });
+        down_LBL_expenses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                down_BTN_expenses.performClick();
+            }
+        });
+        down_LBL_bid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                down_BTN_bid.performClick();
             }
         });
     }
@@ -199,6 +223,9 @@ public class DownloadFilesActivity extends AppCompatActivity {
         down_BTN_bid = findViewById(R.id.down_BTN_bid);
         down_BTN_invoice = findViewById(R.id.down_BTN_invoice);
         down_TOOL_toolbar = findViewById(R.id.down_TOOL_toolbar);
+        down_LBL_invoice = findViewById(R.id.down_LBL_invoice);
+        down_LBL_bid = findViewById(R.id.down_LBL_bid);
+        down_LBL_expenses = findViewById(R.id.down_LBL_expenses);
 
     }
 }

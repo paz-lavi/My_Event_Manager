@@ -6,14 +6,16 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
-    EditText login_EDT_phone;
-    Button login_BTN_continue;
+    private EditText login_EDT_phone;
+    private Button login_BTN_continue;
+    private TextView login_LBL_continue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,12 @@ public class LogInActivity extends AppCompatActivity {
                 return false;
             }
         });
+        login_LBL_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_BTN_continue.performClick();
+            }
+        });
     }
 
 
@@ -70,6 +78,7 @@ public class LogInActivity extends AppCompatActivity {
     private void findVeiws() {
         login_EDT_phone = findViewById(R.id.login_EDT_phone);
         login_BTN_continue = findViewById(R.id.login_BTN_continue);
+        login_LBL_continue = findViewById(R.id.login_LBL_continue);
     }
 
 

@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/down_TOOL_toolbar"
         android:layout_centerHorizontal="true"
-        android:text="הורדת קבלות והצעות מחיר "
         android:gravity="center_horizontal"
+        android:text="הורדת קבלות והצעות מחיר "
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -82,7 +82,7 @@
                 android:gravity="center" />
 
             <TextView
-                android:id="@+id/down_LAY_bid"
+                android:id="@+id/down_LBL_bid"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,6 +93,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,8 +125,6 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
-
 
 
     </LinearLayout>

@@ -142,6 +142,8 @@ public class Menu extends AppCompatActivity {
                 initList();
                 startAlarmManager();
             }
+
+
         });
 
 

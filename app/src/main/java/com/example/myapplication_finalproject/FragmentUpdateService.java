@@ -1,9 +1,12 @@
 package com.example.myapplication_finalproject;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +24,7 @@ public class FragmentUpdateService extends Fragment {
     private EditText editservices_EDT_name;
     private EditText editservices_EDT_price;
     private EditText editservices_EDT_max;
-    private TextView editservices_LBL_update;
+    private TextView editservices_LBL_update,editservices_LBL_remove,editservices_LBL_save;
     private MyService service;
     private boolean update = false;
 
@@ -41,6 +44,8 @@ public class FragmentUpdateService extends Fragment {
         }
 
         findViews(view);
+        setEnabled(false);
+
         if (service != null) {
             editservices_EDT_name.setHint(service.getServiceName());
             editservices_EDT_price.setHint("" + service.getServicePrice());
@@ -53,25 +58,54 @@ public class FragmentUpdateService extends Fragment {
                 updateClick();
             }
         });
-
+        editservices_LBL_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editservices_BTN_update.performClick();
+            }
+        });
         editservices_BTN_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBTclick();
             }
         });
+        editservices_LBL_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editservices_BTN_save.performClick();
+            }
+        });
         editservices_BTN_remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 removeClick();
             }
         });
+        editservices_LBL_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editservices_BTN_remove.performClick();
+            }
+        });
+
 
 
         return view;
     }
 
+    public static void hideSoftKeyboard(Activity activity) {
+        if (activity.getCurrentFocus() == null) {
+            return;
+        }
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
     private void removeClick() {
+        setEnabled(false);
+        hideSoftKeyboard(getActivity());
         updateServices.remove(service);
         editservices_EDT_name.setText("");
         editservices_EDT_price.setText("");
@@ -84,13 +118,19 @@ public class FragmentUpdateService extends Fragment {
 
 
     private void updateClick() {
-        if (!update) {
+        hideSoftKeyboard(getActivity());
+        if (!update && service != null) {
             editservices_EDT_name.setText(service.getServiceName());
             editservices_EDT_price.setText(String.valueOf(service.getServicePrice()));
             editservices_EDT_max.setText(String.valueOf(service.getMaxPerEvent()));
             update = true;
             editservices_LBL_update.setText("ביטול");
             editservices_BTN_update.setBackgroundResource(R.drawable.ic_cancel_color);
+            updateServices.gone();
+            setEnabled(true);
+
+
+
 
         } else {
             editservices_EDT_name.setText("");
@@ -99,12 +139,24 @@ public class FragmentUpdateService extends Fragment {
             update = false;
             editservices_LBL_update.setText("ערוך");
             editservices_BTN_update.setBackgroundResource(R.drawable.ic_edit_file);
+            updateServices.visible();
+           setEnabled(false);
+
 
 
         }
     }
 
+private void setEnabled(boolean b){
+    editservices_EDT_name.setEnabled(b);
+    editservices_EDT_price.setEnabled(b);
+    editservices_EDT_max.setEnabled(b);
+}
+
+
     private void onBTclick() {
+        setEnabled(false);
+        hideSoftKeyboard(getActivity());
         if (!update)
             return;
         int price, max;
@@ -169,6 +221,8 @@ public class FragmentUpdateService extends Fragment {
         editservices_EDT_max = view.findViewById(R.id.editservices_EDT_max);
         editservices_LBL_update = view.findViewById(R.id.editservices_LBL_update);
         editservices_BTN_remove = view.findViewById(R.id.editservices_BTN_remove);
+        editservices_LBL_remove = view.findViewById(R.id.editservices_LBL_remove);
+        editservices_LBL_save = view.findViewById(R.id.editservices_LBL_save);
     }
 
 

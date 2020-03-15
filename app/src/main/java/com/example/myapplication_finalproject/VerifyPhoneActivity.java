@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,9 +29,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
     private String verificationId;
     private FirebaseAuth mAuth;
-    private ProgressBar progressBar;
-    private EditText editText;
-    private Button buttonSignIn;
+    private ProgressBar verify_PSB_bar;
+    private EditText verify_EDT_pass;
+    private Button verify_BTN_login;
+    private TextView verify_LBL_login;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
 
     @Override
@@ -45,31 +47,37 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         String phonenumber = getIntent().getStringExtra(Constants.PHONE);
         sendVerificationCode(phonenumber);
 
-        buttonSignIn.setOnClickListener(new View.OnClickListener() {
+        verify_BTN_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String code = editText.getText().toString().trim();
+                String code = verify_EDT_pass.getText().toString().trim();
 
                 if (code.isEmpty() || code.length() < 6) {
 
-                    editText.setError(Constants.CODE_ERROR_MSG);
-                    editText.requestFocus();
+                    verify_EDT_pass.setError(Constants.CODE_ERROR_MSG);
+                    verify_EDT_pass.requestFocus();
                     return;
                 }
                 verifyCode(code);
             }
         });
 
-        editText.setOnKeyListener(new View.OnKeyListener() {
+        verify_EDT_pass.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                        buttonSignIn.performClick();
+                        verify_BTN_login.performClick();
                         return true;
                     }
                 }
                 return false;
+            }
+        });
+        verify_LBL_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verify_BTN_login.performClick();
             }
         });
     }
@@ -109,7 +117,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     }
 
     private void sendVerificationCode(String number) {
-        progressBar.setVisibility(View.VISIBLE);
+        verify_PSB_bar.setVisibility(View.VISIBLE);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 Constants.COUNTRY_CODE + number,
                 60,
@@ -134,7 +142,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if (code != null) {
-                editText.setText(code);
+                verify_EDT_pass.setText(code);
                 verifyCode(code);
             } else signInWithCredential(phoneAuthCredential);
 
@@ -148,9 +156,10 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     };
 
     private void findViews() {
-        buttonSignIn = findViewById(R.id.buttonSignIn);
-        progressBar = findViewById(R.id.progressbar);
-        editText = findViewById(R.id.editTextCode);
+        verify_BTN_login = findViewById(R.id.verify_BTN_login);
+        verify_PSB_bar = findViewById(R.id.verify_PSB_bar);
+        verify_EDT_pass = findViewById(R.id.verify_EDT_pass);
+        verify_LBL_login = findViewById(R.id.verify_LBL_login);
     }
 
 }

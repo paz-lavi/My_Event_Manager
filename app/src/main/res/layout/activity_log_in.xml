@@ -87,7 +87,7 @@
 
 
             <TextView
-                android:id="@+id/down_LAY_bid"
+                android:id="@+id/login_LBL_continue"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

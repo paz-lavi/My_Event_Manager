@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class ReportActivity extends AppCompatActivity {
     private final String TAG = getClass().getCanonicalName() + "_Log";
     private Button reports_BTN_export;
-    private TextView reports_LBL_year,
+    private TextView reports_LBL_year, reports_LBL_export,
             reports_LBL_l0, reports_LBL_l1, reports_LBL_l2, reports_LBL_l3, reports_LBL_l4, reports_LBL_l5, reports_LBL_l6, reports_LBL_l7, reports_LBL_l8, reports_LBL_l9, reports_LBL_l10, reports_LBL_l11, reports_LBL_l12, reports_LBL_l13,
             reports_LBL_lm0, reports_LBL_lm1, reports_LBL_lm2, reports_LBL_lm3, reports_LBL_lm4, reports_LBL_lm5, reports_LBL_lm6, reports_LBL_lm7, reports_LBL_lm8, reports_LBL_lm9, reports_LBL_lm10, reports_LBL_lm11, reports_LBL_lm12, reports_LBL_lm13,
             reports_LBL_rm0, reports_LBL_rm1, reports_LBL_rm2, reports_LBL_rm3, reports_LBL_rm4, reports_LBL_rm5, reports_LBL_rm6, reports_LBL_rm7, reports_LBL_rm8, reports_LBL_rm9, reports_LBL_rm10, reports_LBL_rm11, reports_LBL_rm12, reports_LBL_rm13,
@@ -41,15 +41,11 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         findViews();
+        setButtons();
+        fillData();
+    }
 
-        reports_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
-        reports_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+    private void fillData() {
         int currentYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(System.currentTimeMillis()));
         years = new String[currentYear - 2020 + 1];
         for (int i = currentYear; i >= 2020; i--)
@@ -72,15 +68,6 @@ public class ReportActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-        reports_BTN_export.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readyToCreate();
 
             }
         });
@@ -242,6 +229,31 @@ public class ReportActivity extends AppCompatActivity {
                 }).create().createPdf(this);
     }
 
+    private void setButtons() {
+        reports_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
+        reports_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        reports_BTN_export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readyToCreate();
+
+            }
+        });
+        reports_LBL_export.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reports_BTN_export.performClick();
+
+            }
+        });
+
+    }
+
 
     private void findViews() {
         reports_SPN_year = findViewById(R.id.reports_SPN_year);
@@ -305,6 +317,7 @@ public class ReportActivity extends AppCompatActivity {
         reports_LBL_r11 = findViewById(R.id.reports_LBL_r11);
         reports_LBL_r12 = findViewById(R.id.reports_LBL_r12);
         reports_LBL_r13 = findViewById(R.id.reports_LBL_r13);
+        reports_LBL_export = findViewById(R.id.reports_LBL_export);
 
 
     }

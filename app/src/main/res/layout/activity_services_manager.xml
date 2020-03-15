@@ -100,7 +100,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/setting_LBL_save"
+                android:id="@+id/setting_LBL_edit"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

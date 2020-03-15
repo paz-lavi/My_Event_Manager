@@ -3,7 +3,6 @@ package com.example.myapplication_finalproject;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -138,6 +137,7 @@ public class FilesManager {
         switch (type) {
             case Constants.EVENTS:
                 s = msp.getString(firebaseUser.getUid() + Constants.EVENTS_FILE_NAME, "");
+                Log.d("dfddfv", s);
                 events = gson.fromJson(s, new TypeToken<HashMap<String, HashMap<String, HashMap<String,
                         HashMap<String, MyEvent>>>>>() {
                 }.getType());
@@ -332,7 +332,18 @@ public class FilesManager {
             t.setPriority(Thread.MAX_PRIORITY);
             t.run();
         } else {
-            read(Constants.EVENTS, context);
+            String s = "";
+            try {
+                s = msp.getString(firebaseUser.getUid() + Constants.EVENTS_FILE_NAME, "");
+                Log.d("dfddfv", s);
+                events = gson.fromJson(s, new TypeToken<HashMap<String, HashMap<String, HashMap<String,
+                        HashMap<String, MyEvent>>>>>() {
+                }.getType());
+            } catch (com.google.gson.JsonSyntaxException e) {
+                msp.putString(firebaseUser.getUid() + Constants.EVENTS_FILE_NAME, "");
+                readEventsFromDatabase(context, finish);
+            }
+            //read(Constants.EVENTS, context);
             finish.onFinish();
         }
 

@@ -6,33 +6,34 @@
     tools:context=".ServicesManager">
 
     <ScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/allservices_LBL_addnew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="הוספת שירות חדש "
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
+                android:text="הוספת שירות חדש "
                 android:textColor="@color/white"
-                android:textSize="28sp" />
+                android:textSize="28sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/allservices_EDT_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:layout_gravity="center_horizontal"
+                android:ems="10"
                 android:gravity="center"
                 android:hint="שם השירות"
                 android:inputType="text"
@@ -40,53 +41,152 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/allservices_EDT_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="1234567890"
-                    android:layout_gravity="center_horizontal"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="מחיר"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+            <EditText
+                android:id="@+id/allservices_EDT_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:digits="1234567890"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="מחיר"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/allservices_EDT_max"
-                    android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/allservices_EDT_max"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:digits="1234567890"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="מקסימום לאירוע"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/allservices_LAY_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:id="@+id/allservices_LAY_cancel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:digits="1234567890"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="מקסימום לאירוע"
-                    android:inputType="number"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical">
 
+                    <Button
+                        android:id="@+id/allservices_BTN_cancel"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_cancel_color"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/allservices_LBL_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="ביטול"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/allservices_LAY_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/allservices_BTN_remove"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+
+                        android:background="@drawable/ic_delete" />
+
+                    <TextView
+                        android:id="@+id/allservices_LBL_remove"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="מחק"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/allservices_LAY_save"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/allservices_BTN_save"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_save_color"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/allservices_LBL_save"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="שמור"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/editservices_LAY_update"
+                android:id="@+id/allservices_LAY_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
+
 
                 <Button
                     android:id="@+id/allservices_BTN_add"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/ic_add_color"
-                  />
+                    android:background="@drawable/ic_add_color" />
 
 
                 <TextView
-                    android:id="@+id/editservices_LBL_update"
+                    android:id="@+id/allservices_LBL_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -96,7 +196,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
 
 
         </LinearLayout>

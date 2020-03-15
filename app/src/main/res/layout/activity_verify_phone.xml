@@ -45,7 +45,7 @@
             android:textStyle="bold" />
 
         <ProgressBar
-            android:id="@+id/progressbar"
+            android:id="@+id/verify_PSB_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -53,7 +53,7 @@
             android:visibility="invisible" />
 
         <EditText
-            android:id="@+id/editTextCode"
+            android:id="@+id/verify_EDT_pass"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -73,7 +73,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonSignIn"
+                android:id="@+id/verify_BTN_login"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
@@ -82,7 +82,7 @@
 
 
             <TextView
-                android:id="@+id/down_LAY_bid"
+                android:id="@+id/verify_LBL_login"
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

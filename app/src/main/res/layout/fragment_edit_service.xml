@@ -127,7 +127,7 @@
                         android:background="@drawable/ic_delete" />
 
                     <TextView
-                        android:id="@+id/payment_LBL_cash"
+                        android:id="@+id/editservices_LBL_remove"
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

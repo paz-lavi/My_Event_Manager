@@ -6,4 +6,6 @@ public interface UpdateServices {
     void remove(MyService service);
 
     void toast(String msg);
+    void gone();
+    void visible();
 }

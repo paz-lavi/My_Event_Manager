@@ -47,6 +47,7 @@ public class NewExpenses extends Fragment {
     private Button newexp_BTN_date;
     private Button newexp_BTN_save;
     private TextView newexp_LBL_date;
+    private TextView newexp_LBL_save;
     private FloatingActionButton newexp_FAB_addinvoice;
     private DatePickerDialog datePickerDialog;
     private View view;
@@ -83,39 +84,11 @@ public class NewExpenses extends Fragment {
 
         findViews(view);
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        newexp_BTN_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                upload();
-            }
-        });
-
-        newexp_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
-        newexp_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callBack_saveExpenses.back();
-            }
-        });
-
-        newexp_BTN_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dateClick();
-            }
-        });
-
-        newexp_FAB_addinvoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SelectImage();
-            }
-        });
-
+        setButtons();
 
         return view;
     }
+
 
     private void dateClick() {
         long now = System.currentTimeMillis();
@@ -344,6 +317,51 @@ public class NewExpenses extends Fragment {
                 .show();
     }
 
+    private void setButtons() {
+        newexp_BTN_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upload();
+            }
+        });
+
+        newexp_TOOL_toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
+        newexp_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack_saveExpenses.back();
+            }
+        });
+
+        newexp_BTN_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dateClick();
+            }
+        });
+        newexp_LBL_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newexp_BTN_date.performClick();
+            }
+        });
+        newexp_LBL_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newexp_BTN_save.performClick();
+            }
+        });
+
+        newexp_FAB_addinvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SelectImage();
+            }
+        });
+
+    }
+
     private void findViews(View view) {
         newexp_EDT_purpose = view.findViewById(R.id.newexp_EDT_purpose);
         newexp_EDT_amount = view.findViewById(R.id.newexp_EDT_amount);
@@ -353,6 +371,7 @@ public class NewExpenses extends Fragment {
         newexp_FAB_addinvoice = view.findViewById(R.id.newexp_FAB_addinvoice);
         newexp_TOOL_toolbar = view.findViewById(R.id.newexp_TOOL_toolbar);
         newexp_LBL_date = view.findViewById(R.id.newexp_LBL_date);
+        newexp_LBL_save = view.findViewById(R.id.newexp_LBL_save);
     }
 
 }

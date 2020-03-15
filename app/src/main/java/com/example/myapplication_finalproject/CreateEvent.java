@@ -56,7 +56,7 @@ public class CreateEvent extends AppCompatActivity {
     private MyEvent event;
     private StorageReference mStorageRef;
     private CreateInvoice invoice;
-    private TextView create_LBL_date ,create_LBL_time;
+    private TextView create_LBL_date, create_LBL_time, create_LBL_createevent;
     private boolean check = true;
 
 
@@ -70,79 +70,9 @@ public class CreateEvent extends AppCompatActivity {
 
         findViews();
         initList();
-
-        create_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        create_BTN_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                long now = System.currentTimeMillis();
-                date = new SimpleDateFormat("dd/MM/yyyy").format(now);
-
-                String[] datestr = date.split("/");
-
-                datePickerDialog = new DatePickerDialog(CreateEvent.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        create_LBL_date.setText(date);
-                    }
-                }, Integer.parseInt(datestr[2]), Integer.parseInt(datestr[1]) - 1, Integer.parseInt(datestr[0]));
-
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.show();
-            }
-        });
-        create_LBL_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                create_BTN_date.performLongClick();
-            }
-        });
-        create_BTN_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timePicker = new TimePickerDialog(CreateEvent.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-                        time = hourOfDay + ":" + (minute < 10 ? "0" + minute : minute);
-                        create_LBL_time.setText(time);
-                    }
-                }, 0, 0, true);
-                timePicker.show();
-            }
-        });
-
-        create_LBL_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                create_LBL_time.performLongClick();
-            }
-        });
-        create_BTN_createevent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBTNclick();
-            }
-        });
-
-        create_SW_rem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                check = isChecked;
-            }
-        });
-        create_SW_rem.setChecked(check);
-
+        setButtons();
     }
+
 
     private void alter(String msg) {
         new AlertDialog.Builder(this)
@@ -213,13 +143,14 @@ public class CreateEvent extends AppCompatActivity {
 
 
     private void showService(OrderService service) {
-      String s = "מחיר ליחידה: " + service.getServicePrice() +"₪\n" +  "כמות מקסימלית לאירוע: "+ service.getMaxPerEvent();
+        String s = "מחיר ליחידה: " + service.getServicePrice() + "₪\n" + "כמות מקסימלית לאירוע: " + service.getMaxPerEvent();
         new AlertDialog.Builder(CreateEvent.this)
                 .setTitle(service.getServiceName())
                 .setMessage(s)
                 .setPositiveButton("סגור", null)
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .show();    }
+                .show();
+    }
 
     private ArrayList<OrderService> getServices() {
         ArrayList<MyService> services;
@@ -324,6 +255,98 @@ public class CreateEvent extends AppCompatActivity {
     }
 
 
+    private void setButtons() {
+        create_TOOL_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        create_BTN_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                long now = System.currentTimeMillis();
+                date = new SimpleDateFormat("dd/MM/yyyy").format(now);
+
+                String[] datestr = date.split("/");
+
+                datePickerDialog = new DatePickerDialog(CreateEvent.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        date = dayOfMonth + "/" + (month + 1) + "/" + year;
+                        create_LBL_date.setText(date);
+                    }
+                }, Integer.parseInt(datestr[2]), Integer.parseInt(datestr[1]) - 1, Integer.parseInt(datestr[0]));
+
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
+            }
+        });
+        create_LBL_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_BTN_date.performLongClick();
+            }
+        });
+        create_BTN_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timePicker = new TimePickerDialog(CreateEvent.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                        time = hourOfDay + ":" + (minute < 10 ? "0" + minute : minute);
+                        create_LBL_time.setText(time);
+                    }
+                }, 0, 0, true);
+                timePicker.show();
+            }
+        });
+
+        create_LBL_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_LBL_time.performLongClick();
+            }
+        });
+        create_BTN_createevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBTNclick();
+            }
+        });
+        create_LBL_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_BTN_time.performClick();
+            }
+        });
+        create_LBL_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_LBL_date.performClick();
+            }
+        });
+        create_LBL_createevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_BTN_createevent.performClick();
+            }
+        });
+
+        create_SW_rem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                check = isChecked;
+            }
+        });
+        create_SW_rem.setChecked(check);
+
+    }
+
     private void findViews() {
         create_LST_notes = findViewById(R.id.create_LST_notes);
         create_BTN_createevent = findViewById(R.id.create_BTN_createevent);
@@ -338,6 +361,7 @@ public class CreateEvent extends AppCompatActivity {
         create_TOOL_toolbar = findViewById(R.id.create_TOOL_toolbar);
         create_LBL_date = findViewById(R.id.create_LBL_date);
         create_LBL_time = findViewById(R.id.create_LBL_time);
+        create_LBL_createevent = findViewById(R.id.create_LBL_createevent);
     }
 
 }
