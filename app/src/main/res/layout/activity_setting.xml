@@ -407,6 +407,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/setting_LAY_clear"
                     android:layout_width="wrap_content"
@@ -424,8 +425,7 @@
                         android:layout_height="30dp"
                         android:layout_gravity="center"
 
-                        android:background="@drawable/ic_eraser"
-                 />
+                        android:background="@drawable/ic_eraser" />
 
                     <TextView
                         android:id="@+id/setting_LBL_clear"
@@ -467,7 +467,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/ic_cancel_color"
 
-         />
+                />
 
             <TextView
                 android:id="@+id/setting_LBL_cancel"

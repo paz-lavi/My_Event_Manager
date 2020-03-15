@@ -240,8 +240,6 @@ public class MyNotification extends IntentService {
                 .setContentIntent(resultPendingIntent);
 
 
-
-
         // Gets an instance of the NotificationManager service//
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 

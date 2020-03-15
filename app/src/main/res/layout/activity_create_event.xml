@@ -40,8 +40,7 @@
         android:scrollbarSize="7dp"
         android:scrollbarStyle="insideOverlay"
         android:scrollbarThumbVertical="@color/black"
-        android:scrollbarTrackVertical="@color/gray"
-        >
+        android:scrollbarTrackVertical="@color/gray">
 
         <LinearLayout
 
@@ -174,9 +173,6 @@
                 </LinearLayout>
 
 
-
-
-
             </LinearLayout>
 
 
@@ -232,8 +228,7 @@
                 android:scrollbarSize="7dp"
                 android:scrollbarStyle="insideOverlay"
                 android:scrollbarThumbVertical="@color/black"
-                android:scrollbarTrackVertical="@color/white"
-                />
+                android:scrollbarTrackVertical="@color/white" />
 
 
         </LinearLayout>

@@ -104,7 +104,7 @@ public class FragmentService extends Fragment {
 
     }
 
-    private void setEnabled(boolean b){
+    private void setEnabled(boolean b) {
         allservices_EDT_name.setEnabled(b);
         allservices_EDT_price.setEnabled(b);
         allservices_EDT_max.setEnabled(b);

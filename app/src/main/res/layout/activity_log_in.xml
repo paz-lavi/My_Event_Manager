@@ -81,9 +81,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_sms"
-           />
-
+                android:background="@drawable/ic_sms" />
 
 
             <TextView

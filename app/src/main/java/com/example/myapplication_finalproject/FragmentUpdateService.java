@@ -24,7 +24,7 @@ public class FragmentUpdateService extends Fragment {
     private EditText editservices_EDT_name;
     private EditText editservices_EDT_price;
     private EditText editservices_EDT_max;
-    private TextView editservices_LBL_update,editservices_LBL_remove,editservices_LBL_save;
+    private TextView editservices_LBL_update, editservices_LBL_remove, editservices_LBL_save;
     private MyService service;
     private boolean update = false;
 
@@ -91,7 +91,6 @@ public class FragmentUpdateService extends Fragment {
         });
 
 
-
         return view;
     }
 
@@ -130,8 +129,6 @@ public class FragmentUpdateService extends Fragment {
             setEnabled(true);
 
 
-
-
         } else {
             editservices_EDT_name.setText("");
             editservices_EDT_price.setText("");
@@ -140,18 +137,17 @@ public class FragmentUpdateService extends Fragment {
             editservices_LBL_update.setText("ערוך");
             editservices_BTN_update.setBackgroundResource(R.drawable.ic_edit_file);
             updateServices.visible();
-           setEnabled(false);
-
+            setEnabled(false);
 
 
         }
     }
 
-private void setEnabled(boolean b){
-    editservices_EDT_name.setEnabled(b);
-    editservices_EDT_price.setEnabled(b);
-    editservices_EDT_max.setEnabled(b);
-}
+    private void setEnabled(boolean b) {
+        editservices_EDT_name.setEnabled(b);
+        editservices_EDT_price.setEnabled(b);
+        editservices_EDT_max.setEnabled(b);
+    }
 
 
     private void onBTclick() {

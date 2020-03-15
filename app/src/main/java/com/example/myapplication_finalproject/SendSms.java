@@ -51,35 +51,35 @@ public class SendSms {
         sendSmsMSG(s, event.getCustomerPhone());
     }
 
-    public static void cancelAutoMSG(MyEvent event ) {
+    public static void cancelAutoMSG(MyEvent event) {
         String s = "פג תוקפה של הצעת המחיר עבור האירוע בתאריך " + event.getDate()
                 + " . \nהאירוע בוטל באופן אוטומטי \nאשמח לעמוד לרשותך בעתיד";
         ;
         sendSmsMSG(s, event.getCustomerPhone());
     }
 
-    public static void confirmMSG(String phoneNumber ) {
+    public static void confirmMSG(String phoneNumber) {
 
         sendSmsMSG("תשובתך נקלטה, נתראה באירוע.", phoneNumber);
     }
 
-    public static void manualConfirmMSG(String phoneNumber, String date ) {
+    public static void manualConfirmMSG(String phoneNumber, String date) {
 
         sendSmsMSG("לבקשתך האירוע בתאריך " + date + " אושר , נתראה באירוע.", phoneNumber);
     }
 
-    public static void manualCCancelMSG(String phoneNumber, String date ) {
+    public static void manualCCancelMSG(String phoneNumber, String date) {
 
         sendSmsMSG("לבקשתך האירוע בתאריך " + date + " בוטל , אשמח לעמוד לרשותך בעתיד.", phoneNumber);
     }
 
-    public static void cancelMSG(String phoneNumber ) {
+    public static void cancelMSG(String phoneNumber) {
 
         sendSmsMSG("תשובתך נקלטה, אשמח לעמוד לרשותך בעתיד.", phoneNumber);
     }
 
-    public static void errorMSG(String phoneNumber ) {
+    public static void errorMSG(String phoneNumber) {
 
-        sendSmsMSG("התשובה לא נקלטה במערכת, נא לשלוח תשובתך בשנית או צור קשר.", phoneNumber );
+        sendSmsMSG("התשובה לא נקלטה במערכת, נא לשלוח תשובתך בשנית או צור קשר.", phoneNumber);
     }
 }

@@ -80,6 +80,7 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/setting_LAY_update"
             android:layout_width="wrap_content"
