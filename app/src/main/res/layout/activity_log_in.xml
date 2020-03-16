@@ -63,17 +63,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:gravity="center"
             android:digits="0123456789"
+            android:gravity="center"
             android:hint="טלפון"
             android:inputType="phone"
-            android:maxLength="10" />
+            android:maxLength="10"
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <Button
@@ -90,8 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="שלח קוד חד פעמי"
                 android:gravity="center_horizontal"
+                android:text="שלח קוד חד פעמי"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
